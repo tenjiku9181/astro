@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "About Taksh";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<div class="h-screen grid grid-cols-2 overflow-hidden max-h-screen">
+		<div class="">
+			<div class="flex flex-col h-full">
+				<div class="flex-1 border-b border-zinc-950">
+					<div class="flex w-full h-full">
+						<div class="flex-1 border-r border-zinc-950">
+							<img src="nature.jpg" alt="nature">
+						</div>
+						<div class="flex-1"></div>
+					</div>
+				</div>
+				<div class="flex-1">
+					<div class="flex w-full h-full">
+						<div class="flex-1 border-r border-zinc-950"></div>
+						<div class="flex-1">
+							<img src="me.jpg" alt="me" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="absolute top-0 left-1/2 h-full w-px bg-zinc-950"></div>
+		<div class="flex flex-col justify-start items-start mt-35 ms-30 tracking-wider">
+			<span class="txt_bg_clr text-4xl">よ。</span>
+			<span class="tracking-wide text-xs opacity-80 mt-8">Hi. Thanks for stopping by.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I'm Taksh, an introvert living in India.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I write code for a living.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I love carb foods.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I have short height and enlarged pores.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I live quite a low-key life.</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">I'm usually not active when it comes to online conversations because I want to save the excitement till I meet</span>
+			<span class="tracking-wide text-xs opacity-80 mt-2">that person in real life. Sometimes it turns out well, but most of the time people see me as a stuck-up bitch :)</span>
+			<span class="tracking-wide text-xs opacity-80 mt-10">2025. Made with <a href="https://astro.build/" target="_blank" class="txt_bg_clr">Astro</a>.</span>
+		</div>
+	</div>
+</BaseLayout>

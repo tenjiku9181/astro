@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: #e4e1df;
+    font-family: 'CormorantGaramond', serif;
+}
+
+.txt_bg_clr {
+    background-color: #779e8c;
+}

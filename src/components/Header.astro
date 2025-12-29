@@ -1,0 +1,48 @@
+---
+const { pathname } = Astro.url;
+---
+
+<header class="flex w-full fixed justify-end top-0 text-sm z-50">
+  <div class="border px-2 py-3 border-t-0 border-e-black border-r-0">
+    <a
+      href="/"
+      class={`highlighter py-1 px-3 ${pathname === "/" ? "active" : ""}`}
+    >
+      Home
+    </a>
+  </div>
+
+  <div class="border px-2 py-3 border-t-0 border-e-black border-r-0">
+    <a
+      href="/posts"
+      class={`highlighter py-1 px-3 ${pathname === "/posts" ? "active" : ""}`}
+    >
+      Posts
+    </a>
+  </div>
+
+  <div class="border px-2 py-3 border-t-0 border-e-black">
+    <a
+      href="/about"
+      class={`highlighter py-1 px-3 ${pathname === "/about" ? "active" : ""}`}
+    >
+      About
+    </a>
+  </div>
+</header>
+
+<style>
+  .highlighter {
+    background-color: transparent;
+    transition: background-color 0.25s ease;
+  }
+
+  .highlighter:hover {
+    background-color: #779e8c;
+    cursor: pointer;
+  }
+
+  .highlighter.active {
+    background-color: #779e8c;
+  }
+</style>

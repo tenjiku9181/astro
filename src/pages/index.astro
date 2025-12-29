@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "It's Taksh";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<div class="h-screen grid grid-cols-2 overflow-hidden max-h-screen">
+		<div class="flex flex-col gap-0">
+			<div
+				class="border-b border-zinc-950 h-[28%] flex justify-end items-end"
+			>
+				<div class="mb-5 mr-10 opacity-70">
+					<span class="text-8xl tracking-tighter font-bold">t</span><span class="text-9xl font-semibold">あ</span><span class="text-8xl">ક્ષ</span><br />
+					<span class="tracking-tight text-xs ms-3 opacity-80">
+						_ _A slothful creature from Earth_ _
+					</span>
+				</div>
+			</div>
+			<div
+				class="border-b border-zinc-950 h-[12%] flex justify-center items-center"
+			>
+				<span class="uppercase tracking-wide text-xl opacity-80"
+					>We know very little</span
+				>
+			</div>
+			<div class="grid grid-cols-[30%_62%_8%] flex-1">
+				<div class="border-r border-zinc-950 relative">
+					<img
+						src="img-左.jpg"
+						alt="img hidari"
+						class="absolute
+								object-cover
+								top-24
+								-right-80
+								scale-[1.7]
+								2xl:scale-[1.7]
+								xl:scale-[1.4]
+								lg:scale-[1.2]
+								md:scale-[1.05]
+								sm:scale-[0.95]
+								2xl:-right-80
+								xl:-right-64
+								lg:-right-48
+								md:-right-32
+								sm:-right-20"
+					/>
+				</div>
+				<div
+					class="border-r border-zinc-950 flex flex-col gap-0 h-full ms-10"
+				>
+					<div class="flex-2"></div>
+					<div class="flex-1">
+						<div class="flex flex-col gap-2">
+							<span class="text-2xl txt_bg_clr w-fit opacity-80"
+								>い am</span
+							>
+							<span class="tracking-tight text-xs opacity-80"
+								>_ _an extroverted introvert, if that makes
+								sense_ _</span
+							>
+						</div>
+					</div>
+				</div>
+				<div class="flex justify-center items-center">
+					<span
+						class="uppercase tracking-wide text-sm opacity-80 [writing-mode:vertical-rl] cursor-vertical-text"
+						>I'm too old to care</span
+					>
+				</div>
+			</div>
+		</div>
+		<div class="absolute top-0 left-1/2 h-full w-px bg-zinc-950"></div>
+		<div class="flex flex-col gap-0">
+			<div class="border-b border-zinc-950 h-[11%]"></div>
+			<div class="grid grid-cols-2 flex-1">
+				<div class="border-r border-zinc-950">
+					<img
+						src="img-右.jpg"
+						alt="img migi"
+						class="w-full h-full object-cover"
+					/>
+				</div>
+				<div class="">
+					<div class="flex flex-col gap-0 h-full">
+						<div
+							class="border-b border-zinc-950 flex-1 justify-center items-center mt-20"
+						>
+							<div
+								class="flex flex-col justify-center items-center"
+							>
+								<span
+									class="uppercase txt_bg_clr text-3xl opacity-80"
+									>I'm not lazy</span
+								>
+								<span
+									class="mt-3 tracking-tight text-xs opacity-80"
+									>_ _I'm on energy saving mode_ _</span
+								>
+							</div>
+						</div>
+						<div class="flex-1 h-full">
+							<div class="flex flex-col ms-7 mt-40">
+								<span class="text-3xl">えnjoying</span>
+								<span
+									class="mt-3 tracking-tight text-xs opacity-80"
+									>_ _being average_ _</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
