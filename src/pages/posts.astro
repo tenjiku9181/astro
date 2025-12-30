@@ -42,26 +42,32 @@ const pageTitle = "Taksh's Notes";
 			class="border-r border-zinc-950 h-screen overflow-y-auto relative notes-main"
 		>
 			<div class="lg:grid grid-cols-4 h-full">
-				{columns.map((column, colIndex) => (
-					<div class={`${colIndex != 3 ? `border-r border-zinc-950`: ``} pt-20`}>
+				{
+					columns.map((column, colIndex) => (
 						<div
-							class={`hidden sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
-						></div>
+							class={`${colIndex != 3 ? `lg:border-r border-zinc-950` : ``} lg:pt-20 `}
+						>
+							<div
+								class={`hidden spacer_class sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
+							/>
 
-						{column.map((post) => (
-							<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
-								<a href={`/posts/${post.id}/`} class="h-full">
-									<div class="sm:h-45 flex items-center justify-center title-link">
-										<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
-											{post.data.title}
-										</h3>
-									</div>
-								</a>
-							</div>
-						))}
-
-					</div>
-				))}
+							{column.map((post) => (
+								<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
+									<a
+										href={`/posts/${post.id}/`}
+										class="h-full"
+									>
+										<div class="sm:h-45 flex items-center justify-center title-link">
+											<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
+												{post.data.title}
+											</h3>
+										</div>
+									</a>
+								</div>
+							))}
+						</div>
+					))
+				}
 			</div>
 			<button
 				id="scrollTopBtn"
@@ -131,6 +137,11 @@ const pageTitle = "Taksh's Notes";
 		.notes-left span {
 			margin-left: 0;
 			white-space: nowrap;
+		}
+	}
+	@media (max-width: 1024px) {
+		.spacer_class {
+			display: none;
 		}
 	}
 </style>
