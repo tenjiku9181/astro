@@ -6,7 +6,7 @@ const pageTitle = "Taksh's Notes";
 <BaseLayout pageTitle={pageTitle}>
 	<div class="grid grid-cols-[26%_47%_31%] h-screen relative notes-wrapper">
 		<div
-			class="border-r border-zinc-950 h-screen overflow-hidden notes-side"
+			class="border-r border-zinc-950 h-screen overflow-hidden notes-left"
 		>
 			<div
 				class="flex border-b border-zinc-950 h-50 justify-start items-end"
@@ -51,7 +51,7 @@ const pageTitle = "Taksh's Notes";
 			</button>
 		</div>
 		<div
-			class="border-r border-zinc-950 h-screen overflow-hidden notes-side"
+			class="border-r border-zinc-950 h-screen overflow-hidden notes-right"
 		>
 		</div>
 	</div>
@@ -72,11 +72,18 @@ const pageTitle = "Taksh's Notes";
 <style>
 	@media (max-width: 639px) {
 		.notes-wrapper {
-			display: block;
+			display: flex;
+			flex-direction: column;
 			height: auto;
 		}
 
-		.notes-side {
+		.notes-left {
+			display: block;
+			height: auto;
+			border-right: none;
+		}
+
+		.notes-right {
 			display: none;
 		}
 
@@ -84,6 +91,24 @@ const pageTitle = "Taksh's Notes";
 			width: 100%;
 			height: auto;
 			border-right: none;
+		}
+
+		.notes-left > div {
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			padding: 6%;
+		}
+
+		.notes-left > div > div {
+			flex-direction: row;
+			gap: 0.4rem;
+			margin-bottom: 0;
+		}
+
+		.notes-left span {
+			margin-left: 0;
+			white-space: nowrap;
 		}
 	}
 </style>
