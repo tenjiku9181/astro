@@ -4,8 +4,10 @@ const pageTitle = "Taksh's Notes";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<div class="grid grid-cols-[26%_47%_31%] h-screen relative">
-		<div class="border-r border-zinc-950 h-screen overflow-hidden">
+	<div class="grid grid-cols-[26%_47%_31%] h-screen relative notes-wrapper">
+		<div
+			class="border-r border-zinc-950 h-screen overflow-hidden notes-side"
+		>
 			<div
 				class="flex border-b border-zinc-950 h-50 justify-start items-end"
 			>
@@ -24,18 +26,34 @@ const pageTitle = "Taksh's Notes";
 		</div>
 		<div
 			id="scrollableDiv"
-			class="border-r border-zinc-950 h-screen overflow-y-auto relative"
+			class="border-r border-zinc-950 h-screen overflow-y-auto relative notes-main"
 		>
-			Coming Soon...
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
+			<div class="p-30">Coming Soon...</div>
 			<button
 				id="scrollTopBtn"
-				class="hidden fixed bottom-8 right-8 px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition txt_bg_clr cursor-pointer"
+				class="hidden fixed bottom-8 right-8 px-4 py-2 rounded-lg shadow-lg transition txt_bg_clr cursor-pointer"
 				onclick="document.getElementById('scrollableDiv').scrollTo({top:0, behavior:'smooth'})"
 			>
-				↑ Go Up
+				↑
 			</button>
 		</div>
-		<div class="border-r border-zinc-950 h-screen overflow-hidden"></div>
+		<div
+			class="border-r border-zinc-950 h-screen overflow-hidden notes-side"
+		>
+		</div>
 	</div>
 </BaseLayout>
 
@@ -51,3 +69,21 @@ const pageTitle = "Taksh's Notes";
 		}
 	});
 </script>
+<style>
+	@media (max-width: 639px) {
+		.notes-wrapper {
+			display: block;
+			height: auto;
+		}
+
+		.notes-side {
+			display: none;
+		}
+
+		.notes-main {
+			width: 100%;
+			height: auto;
+			border-right: none;
+		}
+	}
+</style>
