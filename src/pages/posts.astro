@@ -1,9 +1,18 @@
 ---
-import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("blog");
+const columnConfig = [
+	{ spacerClass: "h-25" },
+	{ spacerClass: "h-15" },
+	{ spacerClass: "h-5" },
+	{ spacerClass: "h-15" },
+];
 
+const columns = [[], [], [], []];
+allPosts.forEach((post, index) => {
+	columns[index % 4].push(post);
+});
 const pageTitle = "Taksh's Notes";
 ---
 
@@ -32,16 +41,28 @@ const pageTitle = "Taksh's Notes";
 			id="scrollableDiv"
 			class="border-r border-zinc-950 h-screen overflow-y-auto relative notes-main"
 		>
-			<ul class="p-10">
-				{
-					allPosts.map((post: any) => (
-						<BlogPost
-							url={`/posts/${post.id}/`}
-							title={post.data.title}
-						/>
-					))
-				}
-			</ul>
+			<div class="lg:grid grid-cols-4 h-full">
+				{columns.map((column, colIndex) => (
+					<div class={`${colIndex != 3 ? `border-r border-zinc-950`: ``} pt-20`}>
+						<div
+							class={`hidden sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
+						></div>
+
+						{column.map((post) => (
+							<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
+								<a href={`/posts/${post.id}/`} class="h-full">
+									<div class="sm:h-45 flex items-center justify-center title-link">
+										<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
+											{post.data.title}
+										</h3>
+									</div>
+								</a>
+							</div>
+						))}
+
+					</div>
+				))}
+			</div>
 			<button
 				id="scrollTopBtn"
 				class="hidden fixed bottom-8 right-8 px-4 py-2 rounded-lg shadow-lg transition txt_bg_clr cursor-pointer"
@@ -58,16 +79,17 @@ const pageTitle = "Taksh's Notes";
 </BaseLayout>
 
 <script>
-	const scrollDiv = document.getElementById("scrollableDiv")!;
-	const scrollBtn = document.getElementById("scrollTopBtn")!;
-
-	scrollDiv.addEventListener("scroll", () => {
-		if (scrollDiv.scrollTop > 50) {
-			scrollBtn.classList.remove("hidden");
-		} else {
-			scrollBtn.classList.add("hidden");
-		}
-	});
+	const scrollDiv = document.getElementById("scrollableDiv");
+	const scrollBtn = document.getElementById("scrollTopBtn");
+	if (scrollDiv && scrollBtn) {
+		scrollDiv.addEventListener("scroll", () => {
+			if (scrollDiv.scrollTop > 50) {
+				scrollBtn.classList.remove("hidden");
+			} else {
+				scrollBtn.classList.add("hidden");
+			}
+		});
+	}
 </script>
 <style>
 	@media (max-width: 639px) {
