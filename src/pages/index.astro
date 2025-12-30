@@ -7,11 +7,18 @@ const pageTitle = "It's Taksh";
 	<div class="h-screen grid grid-cols-2 overflow-hidden max-h-screen big_one">
 		<div class="flex flex-col gap-0">
 			<div
-				class="border-b border-zinc-950 h-[28%] flex justify-end items-end"
+				class="border-b border-zinc-950 h-[28%] flex justify-end items-end relative"
 			>
 				<div class="mb-5 mr-10 opacity-70">
-					<span class="text-8xl tracking-tighter font-bold">t</span
-					><span class="text-9xl font-semibold">あ</span><span
+					<div class="relative">
+						<img
+							src="/butterfly_front.avif"
+							alt="butterfly front"
+							class="absolute -top-7 right-1/3 -translate-x-1/2 w-40 transform -rotate-20 object-contain scale-x-[-1] z-10"
+						/>
+					</div>
+					<span class="text-8xl tracking-tighter font-bold">t</span>
+					<span class="text-9xl font-semibold">あ</span><span
 						class="text-8xl">ક્ષ</span
 					><br />
 					<span class="tracking-tight text-xs ms-3 opacity-80">
@@ -32,7 +39,7 @@ const pageTitle = "It's Taksh";
 			<div class="grid grid-cols-[30%_62%_8%] flex-1">
 				<div class="border-r border-zinc-950 relative">
 					<img
-						src="img-左.jpg"
+						src="/img-左.jpg"
 						alt="img hidari"
 						class="absolute
 								object-cover
@@ -81,7 +88,7 @@ const pageTitle = "It's Taksh";
 			<div class="grid grid-cols-2 flex-1">
 				<div class="border-r border-zinc-950">
 					<img
-						src="img-右.jpg"
+						src="/img-右.jpg"
 						alt="img migi"
 						class="w-full h-full object-cover"
 					/>
@@ -127,8 +134,13 @@ const pageTitle = "It's Taksh";
 	<div class="small_one">
 		<div class="flex flex-col divide-y divide-zinc-900">
 			<section
-				class="min-h-screen flex flex-col justify-center items-center p-6"
+				class="min-h-screen flex flex-col justify-center items-center p-0"
 			>
+			<img
+				src="/butterfly_front.avif"
+				alt="butterfly front"
+				class="-translate-x-1/2 w-40 transform -rotate-20 object-contain scale-x-[-1] z-10"
+			/>
 				<div class="opacity-70">
 					<span class="text-5xl font-bold ms-10">t</span>
 					<span class="text-6xl font-semibold">あ</span>
@@ -148,7 +160,7 @@ const pageTitle = "It's Taksh";
 			</section>
 			<section class="min-h-0 flex items-center justify-center">
 				<img
-					src="img-左.jpg"
+					src="/img-左.jpg"
 					alt="img hidari"
 					class="w-full object-cover"
 				/>
@@ -168,7 +180,7 @@ const pageTitle = "It's Taksh";
 			</section>
 			<section class="min-h-[60vh]">
 				<img
-					src="img-右.jpg"
+					src="/img-右.jpg"
 					alt="img migi"
 					class="w-full h-full object-cover"
 				/>

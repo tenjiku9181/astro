@@ -12,7 +12,11 @@ const pageTitle = "About Taksh";
 				<div class="flex-1 border-b border-zinc-950">
 					<div class="flex w-full h-full">
 						<div class="flex-1 border-r border-zinc-950">
-							<img src="nature.jpg" alt="nature" />
+							<img
+								src="/nature.jpg"
+								alt="nature"
+								class="w-full h-full object-cover"
+							/>
 						</div>
 						<div class="flex-1"></div>
 					</div>
@@ -21,7 +25,11 @@ const pageTitle = "About Taksh";
 					<div class="flex w-full h-full">
 						<div class="flex-1 border-r border-zinc-950"></div>
 						<div class="flex-1">
-							<img src="me.jpg" alt="me" />
+							<img
+								src="/me.jpg"
+								alt="me"
+								class="w-full h-full object-cover"
+							/>
 						</div>
 					</div>
 				</div>
@@ -31,43 +39,85 @@ const pageTitle = "About Taksh";
 			class="absolute top-0 left-1/2 h-full w-px bg-zinc-950 center-divider"
 		>
 		</div>
+
 		<div
-			class="flex flex-col justify-start items-start mt-35 ms-30 tracking-wider about-text"
+			class="flex flex-col justify-start items-start mt-35 ms-30 tracking-wider about-text text-xs opacity-80 relative"
 		>
 			<span class="txt_bg_clr text-4xl">よ。</span>
-			<span class="tracking-wide text-xs opacity-80 mt-8"
-				>Hi. Thanks for stopping by.</span
+			<span class="mt-8">Hi. Thanks for stopping by.</span>
+			<span class="mt-2"
+				>I'm Taksh Gadhiya, an introvert operating out from India.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I'm Taksh, an introvert living in India.</span
+			<span class="mt-2"
+				><span class="font-bold">What I do for a living:</span> I write code.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I write code for a living.</span
+			<span class="mt-2"
+				><span class="font-bold">What I actually do:</span> I google and copy
+				paste things.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I love carb foods.</span
+			<span class="mt-2"
+				>I have a shorter stature and enlarged pores.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I have short height and enlarged pores.</span
+			<span class="mt-2">I live quite a low-key life.</span>
+			<span class="mt-2"
+				><span class="font-bold">Places to visit before I die:</span> Tibet
+				& Vietnam.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I live quite a low-key life.</span
+			<span class="mt-2"
+				><span class="font-bold">One of my embarrassing habits:</span> Talking
+				to myself.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>I'm usually not active when it comes to online conversations
-				because I want to save the excitement till I meet</span
+			<span class="mt-2"
+				>I’m usually quiet online to save excitement for in person
+				meetings.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-2"
-				>that person in real life. Sometimes it turns out well, but most
-				of the time people see me as a stuck-up bitch :)</span
+			<span class="mt-2"
+				>Sometimes it works but most times, I’m seen as a <a
+					href="https://www.hindwi.org/hindi-dictionary/meaning-of-leta-latiif"
+					target="_blank"><em>Let Latiif</em></a
+				>.</span
 			>
-			<span class="tracking-wide text-xs opacity-80 mt-10"
+			<span class="mt-2 font-bold">You'll probably never see me: </span>
+			<div class="flex justify-start items-center gap-2">
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> get angry
+				</div>
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> cry
+				</div>
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> take photos
+					of myself
+				</div>
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> follow
+					internet trends
+				</div>
+			</div>
+			<span class="mt-2 font-bold">About this website:</span>
+			<div class="flex justify-start items-center gap-1">
+				<span style="font-size: 20px; color: #000000;">•</span> It has countless
+				bugs and unoptimized parts I don't bother to fix.
+			</div>
+			<div class="flex justify-start items-center gap-1">
+				<span style="font-size: 20px; color: #000000;">•</span> You won’t
+				find life lessons here. No motivation. No polish. Just lo-fi, trivial,
+				occasionally quirky writing.
+			</div>
+			<span class="mt-8"
 				>2025. Made with <a
 					href="https://astro.build/"
 					target="_blank"
 					class="txt_bg_clr">Astro</a
 				>.</span
 			>
+			<div class="flex justify-center items-center butterfly_img_big">
+				<img
+					src="/butterfly_flat.avif"
+					alt="butterfly flat"
+					class="w-full h-full object-cover"
+				/>
+			</div>
 		</div>
 	</div>
 </BaseLayout>
@@ -99,6 +149,10 @@ const pageTitle = "About Taksh";
 		}
 
 		.center-divider {
+			display: none;
+		}
+
+		.butterfly_img_big {
 			display: none;
 		}
 	}
