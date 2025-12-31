@@ -1,11 +1,13 @@
 ---
-title: My 5th Blog Post
+title: 'Men On Dating Apps'
 author: Astro Learner
-description: "After learning some Astro, I couldn't stop!"
+description: "I had some challenges, but asking in the community really helped!"
 image:
-    url: "https://docs.astro.build/assets/arc.webp"
-    alt: "The Astro logo on a dark background with a purple gradient arc."
-pubDate: 2022-07-08
-tags: ["astro", "blogging", "learning in public", "successes", "2nd"]
+    url: "https://www.mydebugdiary.com/images/atami/526.jpg"
+    alt: "The Astro logo on a dark background with rainbow rays."
+pubDate: 2005-01-01
+location: "Pune"
+tagline: "I decided to explore pune's Suburbs."
+thumbnail: "https://www.mydebugdiary.com/images/small-world/DSCF7538.jpg"
+tags: ["community", "adventure"]
 ---
-5th

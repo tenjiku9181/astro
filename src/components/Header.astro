@@ -15,7 +15,7 @@ const { pathname } = Astro.url;
   <div class="border px-2 py-3 border-t-0 border-e-black border-r-0">
     <a
       href="/posts"
-      class={`highlighter py-1 px-3 ${pathname.startsWith("/posts") ? "active" : ""}`}
+      class={`highlighter py-1 px-3 ${pathname.startsWith("/posts") || pathname.startsWith("/tags") ? "active" : ""}`}
     >
       Posts
     </a>

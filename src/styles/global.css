@@ -5,10 +5,32 @@
 }
 
 body {
+    background:
+                repeating-linear-gradient(30deg, #fff2 0 10%, #fff0 0 24%),
+                repeating-linear-gradient(-23deg, #fff2 0 10%, #fff0 0 14%) #e4e1df;
+    font-family: 'ShipporiMincho', serif;
+}
+
+.bg_color {
     background-color: #e4e1df;
-    font-family: 'CormorantGaramond', serif;
 }
 
 .txt_bg_clr {
+    background-color: #779e8c;
+}
+
+.txt_clr {
+    color: #779e8c;
+}
+
+.tag_button {
+    border-color: #444444;
+    color: #444444;
+    background-color: transparent;
+}
+
+.tag_button:hover {
+    border-color: transparent;
+    color: black;
     background-color: #779e8c;
 }

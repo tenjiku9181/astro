@@ -12,6 +12,9 @@ const blog = defineCollection({
         pubDate: z.date(),
         description: z.string(),
         author: z.string(),
+        location: z.string(),
+        tagline: z.string(),
+        thumbnail: z.string(),
         image: z.object({
             url: z.string(),
             alt: z.string()

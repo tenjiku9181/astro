@@ -1,11 +1,13 @@
 ---
-title: My Second Blog Post
+title: 'Being Invincible'
 author: Astro Learner
-description: "After learning some Astro, I couldn't stop!"
+description: "I had some challenges, but asking in the community really helped!"
 image:
-    url: "https://docs.astro.build/assets/arc.webp"
-    alt: "The Astro logo on a dark background with a purple gradient arc."
-pubDate: 2022-07-08
-tags: ["astro", "blogging", "learning in public", "successes", "2nd"]
+    url: "https://www.mydebugdiary.com/images/flower/flower1.jpg"
+    alt: "The Astro logo on a dark background with rainbow rays."
+pubDate: 2002-01-01
+location: "Polo"
+tagline: "I decided to explore Invincible's Suburbs."
+thumbnail: "https://www.mydebugdiary.com/images/bike.jpg"
+tags: ["discipline", "service", "adventure"]
 ---
-After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!

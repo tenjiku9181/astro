@@ -1,11 +1,13 @@
 ---
-title: My Third Blog Post
+title: 'Taksh at Tatvasoft'
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
 image:
-    url: "https://docs.astro.build/assets/rays.webp"
+    url: "https://www.mydebugdiary.com/images/tonoyama/katsuta-station.jpg"
     alt: "The Astro logo on a dark background with rainbow rays."
-pubDate: 2022-07-15
-tags: ["astro", "learning in public", "setbacks", "community", "3rd"]
+pubDate: 2003-01-01
+location: "Ahmedabad"
+tagline: "I decided to explore Tokyo's Suburbs."
+thumbnail: "https://www.mydebugdiary.com/images/pinky-flowers/pinky1.jpg"
+tags: ["discipline", "community"]
 ---
-It wasn't always smooth sailing, but I'm enjoying building with Astro. And, the [Discord community](https://astro.build/chat) is really friendly and helpful!

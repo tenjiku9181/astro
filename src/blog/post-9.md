@@ -1,11 +1,13 @@
 ---
-title: My 9th Blog Post
+title: 'Authentic'
 author: Astro Learner
-description: "After learning some Astro, I couldn't stop!"
+description: "It's superb"
 image:
-    url: "https://docs.astro.build/assets/arc.webp"
-    alt: "The Astro logo on a dark background with a purple gradient arc."
-pubDate: 2022-07-08
-tags: ["astro", "blogging", "learning in public", "successes", "2nd"]
+    url: "https://www.mydebugdiary.com/images/summer-trip/16.jpg"
+    alt: "The Astro logo on a dark background with rainbow rays."
+pubDate: 2009-01-01
+location: "Saputara"
+tagline: "I decided to explore Saputara's Suburbs."
+thumbnail: "https://www.mydebugdiary.com/images/summer-trip/1.jpg"
+tags: ["discipline"]
 ---
-9th

@@ -26,12 +26,29 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-    <p class="p-30">Posts tagged with {tag}</p>
-    <ul>
-        {
-            posts.map((post) => (
-                <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
-            ))
-        }
-    </ul>
+    <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
+        <span
+            class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"
+            >Posts tagged with '{tag}'</span
+        >
+        <ul class="mt-8">
+            {
+                posts.map((post) => (
+                    <div class="flex justify-start items-center posts_ass_with_tag opacity-75 gap-2 mt-1">
+                        <span>•</span>
+                        <BlogPost
+                            url={`/posts/${post.id}/`}
+                            title={post.data.title}
+                        />
+                    </div>
+                ))
+            }
+        </ul>
+    </div>
 </BaseLayout>
+<style>
+    .posts_ass_with_tag {
+        font-family: "BodoniModa", serif;
+        font-style: italic;
+    }
+</style>

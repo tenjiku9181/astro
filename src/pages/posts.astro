@@ -10,17 +10,29 @@ const columnConfig = [
 ];
 
 const columns = [[], [], [], []];
+// Assign Posts to columns
 allPosts.forEach((post, index) => {
 	columns[index % 4].push(post);
 });
+
+// Tags List
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+
+// Take random cover view
+const getCoverTypeFromId = (id: string) => {
+	let hash = 0;
+	for (let i = 0; i < id.length; i++) {
+		hash = id.charCodeAt(i) + ((hash << 5) - hash);
+	}
+	return Math.abs(hash) % 3;
+};
+
 const pageTitle = "Taksh's Notes";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<div class="grid grid-cols-[26%_47%_31%] h-screen relative notes-wrapper">
-		<div
-			class="border-r border-zinc-950 h-screen overflow-hidden notes-left"
-		>
+		<div class="border-r border-zinc-950 h-screen notes-left">
 			<div
 				class="flex border-b border-zinc-950 h-50 justify-start items-end"
 			>
@@ -34,6 +46,25 @@ const pageTitle = "Taksh's Notes";
 					<span class="tracking-wide text-xs opacity-80 ms-5"
 						>of life_ _</span
 					>
+				</div>
+			</div>
+			<div
+				class="flex flex-col p-6 gap-5 overflow-y-hidden max-h-[calc(100vh-200px)] border-b border-zinc-950"
+			>
+				<span class="font-semibold text-2xl">Tags</span>
+				<div
+					class="flex flex-wrap gap-2 w-full overflow-y-auto max-h-[calc(100vh-200px)] mb-5"
+				>
+					{
+						tags.map((tag) => (
+							<a
+								href={`/tags/${tag}`}
+								class="rounded w-fit px-3 py-2 cursor-pointer tag_button border"
+							>
+								{tag}
+							</a>
+						))
+					}
 				</div>
 			</div>
 		</div>
@@ -51,20 +82,51 @@ const pageTitle = "Taksh's Notes";
 								class={`hidden spacer_class sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
 							/>
 
-							{column.map((post) => (
-								<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
-									<a
-										href={`/posts/${post.id}/`}
-										class="h-full"
-									>
-										<div class="sm:h-45 flex items-center justify-center title-link">
-											<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
-												{post.data.title}
-											</h3>
-										</div>
-									</a>
-								</div>
-							))}
+							{column.map((post) => {
+								const coverType = getCoverTypeFromId(post.id);
+								return (
+									<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
+										<a
+											href={`/posts/${post.id}/`}
+											class="h-full"
+										>
+											<div class="sm:h-45 flex items-center justify-center title-link">
+												{coverType === 0 && (
+													<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
+														{post.data.title}
+													</h3>
+												)}
+
+												{coverType === 1 && (
+													<div class="relative group">
+														<img
+															src={
+																post.data
+																	.thumbnail
+															}
+															alt={
+																post.data.title
+															}
+															width="400"
+															height="400"
+															style="max-width: unset;"
+														/>
+														<p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl bg_color p-3 max-w-[80%] sm:max-w-32.5 text-center border border-zinc-950 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+															{post.data.title}
+														</p>
+													</div>
+												)}
+
+												{coverType === 2 && (
+													<h3 class="txt_bg_clr text-xl text-center uppercase m-auto sm:mx-6 py-16 sm:py-0">
+														{post.data.title}
+													</h3>
+												)}
+											</div>
+										</a>
+									</div>
+								);
+							})}
 						</div>
 					))
 				}
