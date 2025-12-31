@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "ભારત | भारत | India | 天竺";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div
+        class="flex flex-col justify-center items-center w-full max-h-screen italic xl:text-xl lg:text-xl md:text-xl sm:text-md gap-2 xl:p-30 lg:p-0 md:p-0 sm:p-0 xs:p-0"
+    >
+        <figure>
+            <img
+                src='/Flag_of_India.webp'
+                class="mt-8"
+                alt='india'
+            />
+        </figure>
+        <span class="">Some call me Sindhu</span>
+        <span class="">Some say Hind</span>
+        <span class="">While others whisper al-Hind</span>
+        <span class="">To some I am Tenjiku, the land of heaven</span>
+        <span class="">To others Tianzhu, the land of gods</span>
+        <span class="">Some know me as Arya Varta</span>
+        <span class="">Some as Jambudvipa</span>
+        <span class="">Some call me the land of Dharma Gyagar</span>
+        <span class="">And some the sacred land Ta-neter</span>
+        <span class="">Through the echoes of ancient civilizations, </span>
+        <span>I have been called by many names</span>
+        <span class="">Empires have risen and fallen upon my soil</span>
+        <span class="">My rivers have nurtured the oldest wisdom</span>
+        <span class="">My mountains are stood as eternal sentinels</span>
+        <span class="">My spirit remains unbroken</span>
+        <span class="">My essence are immortal</span>
+        <span class="">I am the divine land</span>
+        <span class="">I am India, I am भारत</span>
+    </div>
+</BaseLayout>
+
+<style>
+    figure {
+        --c: 50px;
+        --p: 30px;
+        --d: 10px;
+        background: red;
+        display: inline-block;
+        padding: var(--p);
+        background:
+            radial-gradient(farthest-side at 0 0, #000, #0000) 0 0 / var(--c)
+                var(--c),
+            radial-gradient(farthest-side at 100% 100%, #000, #0000) 100% 100% /
+                var(--c) var(--c),
+            linear-gradient(#fff 0 0) 50% 50% / calc(100% - var(--p))
+                calc(100% - var(--p)),
+            linear-gradient(#0000, #000 25% 75%, #0000) 50% 50% /
+                calc(100% - var(--p)) calc(100% - var(--d)),
+            linear-gradient(90deg, #0000, #000 25% 75%, #0000) 50% 50% /
+                calc(100% - var(--d)) calc(100% - var(--p)),
+            radial-gradient(farthest-side at 0 100%, #00000018, #0000)
+                calc(100% - var(--d) * 0.5) calc(var(--d) * 0.5) / var(--d)
+                var(--d),
+            radial-gradient(farthest-side at 100% 0, #00000018, #0000)
+                calc(var(--d) * 0.5) calc(100% - var(--d) * 0.5) / var(--d)
+                var(--d);
+        background-repeat: no-repeat;
+        clip-path: polygon(
+            0 var(--c),
+            var(--c) 0,
+            100% 0,
+            100% calc(100% - var(--c)),
+            calc(100% - var(--c)) 100%,
+            0 100%
+        );
+    }
+
+    figure:nth-of-type(1) img {
+        width: 200px;
+    }
+</style>
