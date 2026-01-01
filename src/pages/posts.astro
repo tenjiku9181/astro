@@ -1,4 +1,5 @@
 ---
+import BlogPostModal from "../components/BlogPostModal.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("blog");
@@ -19,12 +20,8 @@ allPosts.forEach((post, index) => {
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 
 // Take random cover view
-const getCoverTypeFromId = (id: string) => {
-	let hash = 0;
-	for (let i = 0; i < id.length; i++) {
-		hash = id.charCodeAt(i) + ((hash << 5) - hash);
-	}
-	return Math.abs(hash) % 3;
+const getCoverType = (rowIndex: number, colIndex: number) => {
+	return (rowIndex + colIndex) % 4;
 };
 
 const pageTitle = "Taksh's Notes";
@@ -69,7 +66,6 @@ const pageTitle = "Taksh's Notes";
 			</div>
 		</div>
 		<div
-			id="scrollableDiv"
 			class="border-r border-zinc-950 h-screen overflow-y-auto relative notes-main"
 		>
 			<div class="lg:grid grid-cols-4 h-full">
@@ -82,17 +78,17 @@ const pageTitle = "Taksh's Notes";
 								class={`hidden spacer_class sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
 							/>
 
-							{column.map((post) => {
-								const coverType = getCoverTypeFromId(post.id);
+							{column.map((post, rowIndex) => {
+								const coverType = getCoverType(rowIndex, colIndex);
 								return (
 									<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
-										<a
-											href={`/posts/${post.id}/`}
-											class="h-full"
+										<div
+											class="h-full cursor-pointer"
+											onclick={`openBlogPostModal('${post.id}')`}
 										>
 											<div class="sm:h-45 flex items-center justify-center title-link">
 												{coverType === 0 && (
-													<h3 class="text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
+													<h3 class="transition-transform duration-500 hover:scale-110 text-xl text-center uppercase m-auto mx-6 py-16 sm:py-0">
 														{post.data.title}
 													</h3>
 												)}
@@ -110,20 +106,47 @@ const pageTitle = "Taksh's Notes";
 															width="400"
 															height="400"
 															style="max-width: unset;"
+															class="transition-transform duration-500 group-hover:scale-105"
 														/>
-														<p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl bg_color p-3 max-w-[80%] sm:max-w-32.5 text-center border border-zinc-950 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+														<div class="absolute inset-0 group-hover:bg-black/30 transition-colors duration-300" />
+														<p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl bg_background p-3 max-w-[80%] sm:max-w-32.5 text-center border border-zinc-950 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
 															{post.data.title}
 														</p>
 													</div>
 												)}
 
 												{coverType === 2 && (
-													<h3 class="txt_bg_clr text-xl text-center uppercase m-auto sm:mx-6 py-16 sm:py-0">
+													<h3 class="transition-transform duration-500 hover:scale-107 txt_bg_clr text-xl text-center uppercase m-auto sm:mx-6 py-16 sm:py-0">
 														{post.data.title}
 													</h3>
 												)}
+
+												{coverType === 3 && (
+													<div class="relative group w-full h-45 overflow-hidden">
+														<img
+															src={
+																post.data
+																	.thumbnail
+															}
+															alt={
+																post.data.title
+															}
+															class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+															style="max-width: unset;"
+														/>
+														<div class="absolute inset-0 group-hover:bg-black/30 transition-colors duration-300" />
+														<div class="absolute bottom-0 left-0 right-0 p-2 bg_background/80 backdrop-blur-xs">
+															<h3 class="text-sm sm:text-base uppercase tracking-wide leading-snug text-white">
+																{
+																	post.data
+																		.title
+																}
+															</h3>
+														</div>
+													</div>
+												)}
 											</div>
-										</a>
+										</div>
 									</div>
 								);
 							})}
@@ -131,34 +154,15 @@ const pageTitle = "Taksh's Notes";
 					))
 				}
 			</div>
-			<button
-				id="scrollTopBtn"
-				class="hidden fixed bottom-8 right-8 px-4 py-2 rounded-lg shadow-lg transition txt_bg_clr cursor-pointer"
-				onclick="document.getElementById('scrollableDiv').scrollTo({top:0, behavior:'smooth'})"
-			>
-				↑
-			</button>
 		</div>
 		<div
 			class="border-r border-zinc-950 h-screen overflow-hidden notes-right"
 		>
 		</div>
 	</div>
+	<BlogPostModal posts={allPosts} />
 </BaseLayout>
 
-<script>
-	const scrollDiv = document.getElementById("scrollableDiv");
-	const scrollBtn = document.getElementById("scrollTopBtn");
-	if (scrollDiv && scrollBtn) {
-		scrollDiv.addEventListener("scroll", () => {
-			if (scrollDiv.scrollTop > 50) {
-				scrollBtn.classList.remove("hidden");
-			} else {
-				scrollBtn.classList.add("hidden");
-			}
-		});
-	}
-</script>
 <style>
 	@media (max-width: 639px) {
 		.notes-wrapper {

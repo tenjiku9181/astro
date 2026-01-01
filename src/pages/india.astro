@@ -8,11 +8,7 @@ const pageTitle = "ભારત | भारत | India | 天竺";
         class="flex flex-col justify-center items-center w-full max-h-screen italic xl:text-xl lg:text-xl md:text-xl sm:text-md gap-2 xl:p-30 lg:p-0 md:p-0 sm:p-0 xs:p-0"
     >
         <figure>
-            <img
-                src='/Flag_of_India.webp'
-                class="mt-8"
-                alt='india'
-            />
+            <img src="/Flag_of_India.webp" class="mt-8" alt="india" />
         </figure>
         <span class="">Some call me Sindhu</span>
         <span class="">Some say Hind</span>
@@ -36,41 +32,6 @@ const pageTitle = "ભારત | भारत | India | 天竺";
 </BaseLayout>
 
 <style>
-    figure {
-        --c: 50px;
-        --p: 30px;
-        --d: 10px;
-        background: red;
-        display: inline-block;
-        padding: var(--p);
-        background:
-            radial-gradient(farthest-side at 0 0, #000, #0000) 0 0 / var(--c)
-                var(--c),
-            radial-gradient(farthest-side at 100% 100%, #000, #0000) 100% 100% /
-                var(--c) var(--c),
-            linear-gradient(#fff 0 0) 50% 50% / calc(100% - var(--p))
-                calc(100% - var(--p)),
-            linear-gradient(#0000, #000 25% 75%, #0000) 50% 50% /
-                calc(100% - var(--p)) calc(100% - var(--d)),
-            linear-gradient(90deg, #0000, #000 25% 75%, #0000) 50% 50% /
-                calc(100% - var(--d)) calc(100% - var(--p)),
-            radial-gradient(farthest-side at 0 100%, #00000018, #0000)
-                calc(100% - var(--d) * 0.5) calc(var(--d) * 0.5) / var(--d)
-                var(--d),
-            radial-gradient(farthest-side at 100% 0, #00000018, #0000)
-                calc(var(--d) * 0.5) calc(100% - var(--d) * 0.5) / var(--d)
-                var(--d);
-        background-repeat: no-repeat;
-        clip-path: polygon(
-            0 var(--c),
-            var(--c) 0,
-            100% 0,
-            100% calc(100% - var(--c)),
-            calc(100% - var(--c)) 100%,
-            0 100%
-        );
-    }
-
     figure:nth-of-type(1) img {
         width: 200px;
     }

@@ -1,0 +1,129 @@
+---
+const { posts } = Astro.props;
+---
+
+<div
+    id="blogPostModal"
+    class="fixed inset-0 bg-black/70 hidden z-50 flex items-center justify-center"
+    onclick="closeBlogPostModal()"
+>
+    <div
+        class="bg_background w-[90%] max-w-5xl h-[80%] relative flex"
+        onclick="event.stopPropagation()"
+    >
+        <button
+            class="absolute top-4 right-4 text-xl rounded-full cursor-pointer opacity-60 hover:opacity-100"
+            onclick="closeBlogPostModal()"
+        >
+            <img
+                src="/close_icon.png"
+                class="h-7 w-7 scale-[-1]"
+                alt="prev button icon"
+            />
+        </button>
+        <button
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl rounded-full bg_background p-0 cursor-pointer flex justify-center items-center opacity-60 hover:opacity-100"
+            onclick="prevPost()"
+        >
+            <img
+                src="/prev_next_icon.png"
+                class="h-7 w-7 scale-[-1]"
+                alt="prev button icon"
+            />
+        </button>
+        <button
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-2xl rounded-full bg_background p-0 cursor-pointer flex justify-center items-center opacity-60 hover:opacity-100"
+            onclick="nextPost()"
+        >
+            <img
+                src="/prev_next_icon.png"
+                class="h-7 w-7"
+                alt="prev button icon"
+            />
+        </button>
+        <div class="flex flex-col sm:flex-row w-full h-full">
+            <div
+                class="w-full sm:w-2/3 bg-black flex items-center justify-center h-1/2 sm:h-full"
+            >
+                <img id="modalImage" class="max-h-full object-contain" />
+            </div>
+            <div
+                class="w-full sm:w-1/3 p-4 sm:p-6 flex flex-col justify-between h-1/2 sm:h-full"
+            >
+                <div>
+                    <p id="modalDate" class="text-xs opacity-60"></p>
+                    <h2 id="modalTitle" class="text-xl font-semibold mt-2"></h2>
+                    <p id="modalTagline" class="mt-4 text-sm opacity-80"></p>
+                </div>
+                <a
+                    id="readMoreBtn"
+                    data-href=""
+                    class="border px-4 py-2 text-center cursor-pointer tag_button"
+                >
+                    Read More →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline define:vars={{ posts }}>
+    let currentIndex = 0;
+
+    window.openBlogPostModal = function (postId) {
+        currentIndex = posts.findIndex((p) => p.id === postId);
+        renderPost();
+        document.getElementById("blogPostModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+    };
+
+    window.closeBlogPostModal = function () {
+        document.getElementById("blogPostModal").classList.add("hidden");
+        document.body.style.overflow = "";
+    };
+
+    function renderPost() {
+        const post = posts[currentIndex];
+
+        document.getElementById("modalImage").src = post.data.thumbnail;
+        document.getElementById("modalTitle").innerText = post.data.title;
+        document.getElementById("modalDate").innerText = post.data.date ?? "";
+        document.getElementById("modalTagline").innerText =
+            post.data.description ?? "";
+
+        const readMore = document.getElementById("readMoreBtn");
+        readMore.setAttribute("href", `/posts/${post.id}/`);
+
+        const prevBtn = document.querySelector(
+            "#blogPostModal button[onclick='prevPost()']",
+        );
+        const nextBtn = document.querySelector(
+            "#blogPostModal button[onclick='nextPost()']",
+        );
+
+        if (posts.length <= 1) {
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+        } else {
+            prevBtn.style.display = currentIndex === 0 ? "none" : "flex";
+            nextBtn.style.display =
+                currentIndex === posts.length - 1 ? "none" : "flex";
+        }
+    }
+
+    window.nextPost = function () {
+        currentIndex = (currentIndex + 1) % posts.length;
+        renderPost();
+    };
+
+    window.prevPost = function () {
+        currentIndex = (currentIndex - 1 + posts.length) % posts.length;
+        renderPost();
+    };
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeBlogPostModal();
+        }
+    });
+</script>

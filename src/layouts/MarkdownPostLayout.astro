@@ -1,28 +1,28 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, prevPost, nextPost } = Astro.props;
 ---
 
 <BaseLayout pageTitle={`Post | ${frontmatter.title}`}>
   <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
     <span
       class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"
-      >{frontmatter.title}</span
     >
-
+      {frontmatter.title}
+    </span>
     <div
       class="flex justify-center items-center gap-2 text-sm italic mt-5 opacity-80"
     >
       <img src="/calender.png" class="h-7 w-7" />
-      <span
-        >{
+      <span>
+        {
           frontmatter.pubDate.toLocaleDateString("en-GB", {
             day: "numeric",
             month: "short",
             year: "numeric",
           })
-        }</span
-      >
+        }
+      </span>
     </div>
     <div
       class="flex justify-center items-center gap-2 text-sm italic mt-3 opacity-80"
@@ -30,9 +30,7 @@ const { frontmatter } = Astro.props;
       <img src="/location.png" class="h-7 w-7" />
       {frontmatter.location}
     </div>
-    <div
-      class="flex justify-center items-center gap-2 text-sm mt-3 opacity-80"
-    >
+    <div class="flex justify-center items-center gap-2 text-sm mt-3 opacity-80">
       <img src="/tag.png" class="h-6 w-6 scale-x-[-1]" />
       {
         frontmatter.tags.map((tag: string) => (
@@ -43,56 +41,66 @@ const { frontmatter } = Astro.props;
       }
     </div>
     <span class="mt-6">--- * ---</span>
-    <span class="text-sm italic opacity-80"
-      ><em>
-        {frontmatter.tagline}
-      </em>
+    <span class="text-sm italic opacity-80">
+      <em>{frontmatter.tagline}</em>
     </span>
-    <span class="">--- * ---</span>
-    <p class="text-sm opacity-80 mt-8">{frontmatter.description}</p>
-    <figure>
-      <img
-        src={frontmatter.image.url}
-        class="mt-8 w-227.5"
-        alt={frontmatter.image.alt}
-      />
-    </figure>
+    <span>--- * ---</span>
+    <p class="text-sm opacity-80 mt-8 text-center max-w-2xl">
+      {frontmatter.description}
+    </p>
+    <div class="flex flex-col gap-16 mt-14 w-full items-center">
+      {
+        frontmatter.story.map(
+          (item: {
+            image: {
+              url: string | null | undefined;
+              alt: string | null | undefined;
+            };
+            location: unknown;
+            desc: unknown;
+          }) => (
+            <figure class="flex flex-col items-center gap-4 max-w-3xl">
+              <img src={item.image.url} alt={item.image.alt} class="w-227.5" />
+
+              <figcaption class="text-sm italic opacity-80 text-center">
+                <div class="flex justify-center items-center">
+                  📍<span class="block font-semibold">{item.location}</span>
+                </div>
+                <span>{item.desc}</span>
+              </figcaption>
+            </figure>
+          ),
+        )
+      }
+    </div>
+    <div class="flex justify-between gap-4 mt-12 max-w-3xl w-full">
+      {
+        prevPost && (
+          <a
+            href={`/posts/${prevPost.id}`}
+            class="px-4 py-2 rounded shadow border border-zinc-700 text-zinc-700 bg-transparent"
+          >
+            ← {prevPost.data.title}
+          </a>
+        )
+      }
+
+      {
+        nextPost && (
+          <a
+            href={`/posts/${nextPost.id}`}
+            class="ml-auto px-4 py-2 rounded shadow border border-zinc-700 text-zinc-700 bg-transparent"
+          >
+            {nextPost.data.title} →
+          </a>
+        )
+      }
+    </div>
   </div>
 </BaseLayout>
-<style>
-  figure {
-    --c: 50px;
-    --p: 30px;
-    --d: 10px;
-    background: red;
-    display: inline-block;
-    padding: var(--p);
-    background:
-      radial-gradient(farthest-side at 0 0, #000, #0000) 0 0 / var(--c) var(--c),
-      radial-gradient(farthest-side at 100% 100%, #000, #0000) 100% 100% /
-        var(--c) var(--c),
-      linear-gradient(#fff 0 0) 50% 50% / calc(100% - var(--p))
-        calc(100% - var(--p)),
-      linear-gradient(#0000, #000 25% 75%, #0000) 50% 50% /
-        calc(100% - var(--p)) calc(100% - var(--d)),
-      linear-gradient(90deg, #0000, #000 25% 75%, #0000) 50% 50% /
-        calc(100% - var(--d)) calc(100% - var(--p)),
-      radial-gradient(farthest-side at 0 100%, #00000018, #0000)
-        calc(100% - var(--d) * 0.5) calc(var(--d) * 0.5) / var(--d) var(--d),
-      radial-gradient(farthest-side at 100% 0, #00000018, #0000)
-        calc(var(--d) * 0.5) calc(100% - var(--d) * 0.5) / var(--d) var(--d);
-    background-repeat: no-repeat;
-    clip-path: polygon(
-      0 var(--c),
-      var(--c) 0,
-      100% 0,
-      100% calc(100% - var(--c)),
-      calc(100% - var(--c)) 100%,
-      0 100%
-    );
-  }
 
-  figure:nth-of-type(1) img {
+<style>
+  figure img {
     width: calc(var(--spacing) * 227.5);
   }
 </style>
