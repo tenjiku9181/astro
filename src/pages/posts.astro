@@ -1,29 +1,33 @@
 ---
 import BlogPostModal from "../components/BlogPostModal.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-const allPosts = await getCollection("blog");
+const response = await fetch("http://localhost:5200/blogs");
+if (!response.ok) {
+	throw new Error("Failed to fetch blog intelligence");
+}
+const apiPosts = await response.json();
+const allPosts = apiPosts.map((post: any) => ({
+	id: post._id,
+	data: {
+		title: post.title,
+		thumbnail: post.thumbnailUrl,
+		tags: post.tags ?? [],
+	},
+}));
 const columnConfig = [
 	{ spacerClass: "h-25" },
 	{ spacerClass: "h-15" },
 	{ spacerClass: "h-5" },
 	{ spacerClass: "h-15" },
 ];
-
-const columns = [[], [], [], []];
-// Assign Posts to columns
-allPosts.forEach((post, index) => {
+const columns: { id: string; data: { title: string; thumbnail: string; tags: string[] } }[][] = [[], [], [], []];
+allPosts.forEach((post: any, index: any) => {
 	columns[index % 4].push(post);
 });
-
-// Tags List
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
-
-// Take random cover view
 const getCoverType = (rowIndex: number, colIndex: number) => {
 	return (rowIndex + colIndex) % 4;
 };
-
 const pageTitle = "Taksh's Notes";
 ---
 
@@ -78,8 +82,11 @@ const pageTitle = "Taksh's Notes";
 								class={`hidden spacer_class sm:block border-b border-zinc-950 ${columnConfig[colIndex].spacerClass}`}
 							/>
 
-							{column.map((post, rowIndex) => {
-								const coverType = getCoverType(rowIndex, colIndex);
+							{column.map((post: any, rowIndex: any) => {
+								const coverType = getCoverType(
+									rowIndex,
+									colIndex,
+								);
 								return (
 									<div class="cursor-pointer overflow-hidden border-b border-zinc-950">
 										<div

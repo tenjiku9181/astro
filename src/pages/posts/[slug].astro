@@ -1,0 +1,32 @@
+---
+export const prerender = false;
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+const { slug } = Astro.params;
+const allRes = await fetch("http://localhost:5200/blogs");
+if (!allRes.ok) {
+	throw new Error("Failed to fetch blog intelligence");
+}
+const apiPosts = await allRes.json();
+const allPosts = apiPosts.map((post: any) => ({
+	id: post._id,
+	data: post,
+}));
+const postRes = await fetch(`http://localhost:5200/blogs/${slug}`);
+if (!postRes.ok) {
+	throw new Error("Post not found");
+}
+const postData = await postRes.json();
+const post = {
+	id: postData._id,
+	data: postData,
+};
+const currentIndex = allPosts.findIndex((p: { id: any }) => p.id === post.id);
+const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+---
+
+<MarkdownPostLayout
+	frontmatter={post.data}
+	prevPost={prevPost}
+	nextPost={nextPost}
+/>

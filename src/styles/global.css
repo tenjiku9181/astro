@@ -59,3 +59,11 @@ figure {
             calc(100% - var(--c)) 100%,
             0 100%);
 }
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}

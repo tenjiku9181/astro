@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter, prevPost, nextPost } = Astro.props;
+const publishedDate = new Date(frontmatter.pubDate);
 ---
 
 <BaseLayout pageTitle={`Post | ${frontmatter.title}`}>
@@ -16,7 +17,7 @@ const { frontmatter, prevPost, nextPost } = Astro.props;
       <img src="/calender.png" class="h-7 w-7" />
       <span>
         {
-          frontmatter.pubDate.toLocaleDateString("en-GB", {
+          publishedDate.toLocaleDateString("en-GB", {
             day: "numeric",
             month: "short",
             year: "numeric",
@@ -50,23 +51,16 @@ const { frontmatter, prevPost, nextPost } = Astro.props;
     </p>
     <div class="flex flex-col gap-16 mt-14 w-full items-center">
       {
-        frontmatter.story.map(
-          (item: {
-            image: {
-              url: string | null | undefined;
-              alt: string | null | undefined;
-            };
-            location: unknown;
-            desc: unknown;
-          }) => (
+        frontmatter.stories.map(
+          (item: any) => (
             <figure class="flex flex-col items-center gap-4 max-w-3xl">
-              <img src={item.image.url} alt={item.image.alt} class="w-227.5" />
+              <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
 
               <figcaption class="text-sm italic opacity-80 text-center">
                 <div class="flex justify-center items-center">
                   📍<span class="block font-semibold">{item.location}</span>
                 </div>
-                <span>{item.desc}</span>
+                <span>{item.description}</span>
               </figcaption>
             </figure>
           ),

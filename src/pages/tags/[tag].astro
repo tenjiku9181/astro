@@ -1,15 +1,23 @@
 ---
-import { getCollection } from "astro:content";
 import BlogPost from "../../components/BlogPost.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
 export async function getStaticPaths() {
-    const allPosts = await getCollection("blog");
-
+    const response = await fetch("http://localhost:5200/blogs");
+    if (!response.ok) {
+        throw new Error("Failed to fetch blog intelligence");
+    }
+    const apiPosts = await response.json();
+    const allPosts = apiPosts.map((post: any) => ({
+        id: post._id,
+        data: {
+            title: post.title,
+            thumbnail: post.thumbnailUrl,
+            tags: post.tags ?? [],
+        },
+    }));
     const uniqueTags = [
         ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
     ];
-
     return uniqueTags.map((tag) => {
         const filteredPosts = allPosts.filter((post: any) =>
             post.data.tags.includes(tag),
@@ -20,7 +28,6 @@ export async function getStaticPaths() {
         };
     });
 }
-
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
@@ -33,7 +40,7 @@ const { posts } = Astro.props;
         >
         <ul class="mt-8">
             {
-                posts.map((post) => (
+                posts.map((post: any) => (
                     <div class="flex justify-start items-center posts_ass_with_tag opacity-75 gap-2 mt-1">
                         <span>•</span>
                         <BlogPost
@@ -44,12 +51,30 @@ const { posts } = Astro.props;
                 ))
             }
         </ul>
-        <img src="/tag.avif" alt="tag cycle" class="" />
+        <img src="/tag.avif" alt="tag cycle" class="rotating-element mt-10" />
     </div>
 </BaseLayout>
 <style>
     .posts_ass_with_tag {
         font-family: "BodoniModa", serif;
         font-style: italic;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(
+                360deg
+            );
+        }
+    }
+
+    .rotating-element {
+        animation-name: spin;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
     }
 </style>
