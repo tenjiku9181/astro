@@ -51,20 +51,18 @@ const publishedDate = new Date(frontmatter.pubDate);
     </p>
     <div class="flex flex-col gap-16 mt-14 w-full items-center">
       {
-        frontmatter.stories.map(
-          (item: any) => (
-            <figure class="flex flex-col items-center gap-4 max-w-3xl">
-              <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
+        frontmatter.stories.map((item: any) => (
+          <figure class="flex flex-col items-center gap-4 max-w-3xl">
+            <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
 
-              <figcaption class="text-sm italic opacity-80 text-center">
-                <div class="flex justify-center items-center">
-                  📍<span class="block font-semibold">{item.location}</span>
-                </div>
-                <span>{item.description}</span>
-              </figcaption>
-            </figure>
-          ),
-        )
+            <figcaption class="text-sm italic opacity-80 text-center">
+              <div class="flex justify-center items-center">
+                📍<span class="block font-semibold">{item.location}</span>
+              </div>
+              <span>{item.description}</span>
+            </figcaption>
+          </figure>
+        ))
       }
     </div>
     <div class="flex justify-between gap-4 mt-12 max-w-3xl w-full">
@@ -78,7 +76,6 @@ const publishedDate = new Date(frontmatter.pubDate);
           </a>
         )
       }
-
       {
         nextPost && (
           <a

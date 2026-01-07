@@ -1,23 +1,14 @@
 ---
 import BlogPost from "../../components/BlogPost.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-    const response = await fetch("http://localhost:5200/blogs");
-    if (!response.ok) {
-        throw new Error("Failed to fetch blog intelligence");
-    }
-    const apiPosts = await response.json();
-    const allPosts = apiPosts.map((post: any) => ({
-        id: post._id,
-        data: {
-            title: post.title,
-            thumbnail: post.thumbnailUrl,
-            tags: post.tags ?? [],
-        },
-    }));
+    const allPosts = await getCollection("blog");
+
     const uniqueTags = [
         ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
     ];
+
     return uniqueTags.map((tag) => {
         const filteredPosts = allPosts.filter((post: any) =>
             post.data.tags.includes(tag),
@@ -32,7 +23,7 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={tag}>
+<BaseLayout pageTitle={`Tag | ${tag}`} >
     <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
         <span
             class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"

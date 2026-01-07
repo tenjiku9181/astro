@@ -1,0 +1,45 @@
+---
+// export const prerender = false;
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import { getCollection, render } from "astro:content";
+
+// const { slug } = Astro.params;
+// const allRes = await fetch("http://localhost:5200/blogs");
+// if (!allRes.ok) {
+// 	throw new Error("Failed to fetch blog intelligence");
+// }
+// const apiPosts = await allRes.json();
+// const allPosts = apiPosts.map((post: any) => ({
+// 	id: post._id,
+// 	data: post,
+// }));
+// const postRes = await fetch(`http://localhost:5200/blogs/${slug}`);
+// if (!postRes.ok) {
+// 	throw new Error("Post not found");
+// }
+// const postData = await postRes.json();
+// const post = {
+// 	id: postData._id,
+// 	data: postData,
+// };
+let prevPost: any = null;
+let nextPost: any = null;
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	const currentIndex = posts.findIndex((p: { id: any }) => p.id === post.id);
+	prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+	nextPost =
+		currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<MarkdownPostLayout frontmatter={post.data} prevPost={prevPost} nextPost={nextPost}>
+	<Content />
+</MarkdownPostLayout>
