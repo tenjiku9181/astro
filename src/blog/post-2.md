@@ -12,11 +12,8 @@ description: "This is the first post of my new Astro blog."
 stories:
   - imageUrl: "https://www.mydebugdiary.com/images/summer-trip/37.jpg"
     location: "Sindhu bhavan"
-    description: "It's expensive"
+    storycaption: "It's expensive"
   - imageUrl: "https://www.mydebugdiary.com/images/ochakai/o1.jpg"
     location: "Navrangpura"
-    description: "It's normal and cool"
-  - imageUrl: "https://www.mydebugdiary.com/images/ochakai/o2.jpg"
-    location: "Ochakaki"
-    description: "It's LIVELY"
+    storycaption: "It's normal and cool"
 ---

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter, prevPost, nextPost } = Astro.props;
+const { frontmatter } = Astro.props;
 const publishedDate = new Date(frontmatter.pubDate);
 ---
 
@@ -49,49 +49,30 @@ const publishedDate = new Date(frontmatter.pubDate);
     <p class="text-sm opacity-80 mt-8 text-center max-w-2xl">
       {frontmatter.description}
     </p>
-    <div class="flex flex-col gap-16 mt-14 w-full items-center">
-      {
-        frontmatter.stories.map((item: any) => (
-          <figure class="flex flex-col items-center gap-4 max-w-3xl">
-            <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
+    {
+      frontmatter.stories && frontmatter.stories.length > 0 && (
+        <div class="flex flex-col gap-16 mt-14 w-full items-center">
+          {frontmatter.stories.map((item: any) => (
+            <figure class="flex flex-col items-center gap-4 max-w-3xl">
+              <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
 
-            <figcaption class="text-sm italic opacity-80 text-center">
-              <div class="flex justify-center items-center">
-                📍<span class="block font-semibold">{item.location}</span>
-              </div>
-              <span>{item.description}</span>
-            </figcaption>
-          </figure>
-        ))
-      }
-    </div>
-    <div class="flex justify-between gap-4 mt-12 max-w-3xl w-full">
-      {
-        prevPost && (
-          <a
-            href={`/posts/${prevPost.id}`}
-            class="px-4 py-2 rounded shadow border border-zinc-700 text-zinc-700 bg-transparent"
-          >
-            ← {prevPost.data.title}
-          </a>
-        )
-      }
-      {
-        nextPost && (
-          <a
-            href={`/posts/${nextPost.id}`}
-            class="ml-auto px-4 py-2 rounded shadow border border-zinc-700 text-zinc-700 bg-transparent"
-          >
-            {nextPost.data.title} →
-          </a>
-        )
-      }
-    </div>
+              <figcaption class="text-sm italic opacity-80 text-center">
+                <div class="flex justify-center items-center">
+                  📍<span class="block font-semibold">{item.location}</span>
+                </div>
+                <span>{item.storycaption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )
+    }
+    <slot />
   </div>
-</BaseLayout>
 
-<style>
-  figure img {
-    width: calc(var(--spacing) * 227.5);
-  }
-</style>
+  <style>
+    figure img {
+      width: calc(var(--spacing) * 227.5);
+    }
+  </style>
+</BaseLayout>

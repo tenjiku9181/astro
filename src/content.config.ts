@@ -15,15 +15,13 @@ const blog = defineCollection({
     tagline: z.string(),
     thumbnail: z.string().url(),
     description: z.string(),
-
-    // 👇 New evidence formally registered
     stories: z.array(
       z.object({
         imageUrl: z.string().url(),
         location: z.string(),
-        description: z.string(),
+        storycaption: z.string(),
       })
-    ),
+    ).optional(),
   }),
 });
 
