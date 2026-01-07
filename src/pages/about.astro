@@ -43,77 +43,161 @@ const pageTitle = "About Taksh";
 		<div
 			class="flex flex-col justify-start items-start mt-35 ms-30 tracking-wider about-text text-xs opacity-80 relative"
 		>
-			<span class="txt_bg_clr text-4xl">よ。</span>
-			<span class="mt-8">Hi. Thanks for stopping by.</span>
-			<span class="mt-2"
-				>I'm Taksh Gadhiya, an introvert operating out from <a
-					href="/india"
-					class="txt_bg_clr"
-					target="_blank">India</a
-				>.</span
-			>
-			<span class="mt-2"
-				><span class="font-bold">What I do for a living:</span> I write code.</span
-			>
-			<span class="mt-2"
-				><span class="font-bold">What I actually do:</span> I google and copy
-				paste things.</span
-			>
-			<span class="mt-2">I have a shorter stature and normal pores.</span>
-			<span class="mt-2">I live quite a low-key life.</span>
-			<span class="mt-2"
-				><span class="font-bold">Places to visit before I die:</span> Tibet
-				& Vietnam.</span
-			>
-			<span class="mt-2"
-				><span class="font-bold">One of my embarrassing habits:</span> Talking
-				to myself.</span
-			>
-			<span class="mt-2"
-				>I’m usually quiet online to save excitement for in person
-				meetings.</span
-			>
-			<span class="mt-2"
-				>Sometimes it works but most times, I’m seen as a <a
-					class="txt_bg_clr"
-					href="https://www.hindwi.org/hindi-dictionary/meaning-of-leta-latiif"
-					target="_blank"><em>Let Latiif</em></a
-				>.</span
-			>
-			<span class="mt-2 font-bold">You'll probably never see me: </span>
-			<div class="flex justify-start items-center gap-2">
-				<div class="flex justify-start items-center gap-1">
-					<span style="font-size: 20px; color: #000000;">•</span> get angry
-				</div>
-				<div class="flex justify-start items-center gap-1">
-					<span style="font-size: 20px; color: #000000;">•</span> cry
-				</div>
-				<div class="flex justify-start items-center gap-1">
-					<span style="font-size: 20px; color: #000000;">•</span> take photos
-					of myself
-				</div>
-				<div class="flex justify-start items-center gap-1">
-					<span style="font-size: 20px; color: #000000;">•</span> follow
-					internet trends
-				</div>
+			<div class="flex justify-between items-center w-full">
+				<span class="txt_bg_clr text-4xl">よ。</span>
+				<span class="text-4xl p-0 sm:p-5">
+					<label class="switch">
+						<input
+							type="checkbox"
+							onclick="handleLinkViewToggle()"
+							id="aboutSwitch"
+						/>
+						<div>
+							<span></span>
+						</div>
+					</label>
+				</span>
 			</div>
-			<span class="mt-2 font-bold">About this website:</span>
-			<div class="flex justify-start items-center gap-1">
-				<span style="font-size: 20px; color: #000000;">•</span> It has countless
-				bugs and unoptimized parts I don't bother to fix.
+			<div class="flex flex-col justify-start items-start switch-off">
+				<span class="mt-8">Hi. Thanks for stopping by.</span>
+				<span class="mt-2"
+					>I'm Taksh Gadhiya, an introvert operating out from <a
+						href="/india"
+						class="txt_bg_clr"
+						target="_blank">India</a
+					>.</span
+				>
+				<span class="mt-2"
+					><span class="font-bold">What I do for a living:</span> I write
+					code.</span
+				>
+				<span class="mt-2"
+					><span class="font-bold">What I actually do:</span> I google and
+					copy paste things.</span
+				>
+				<span class="mt-2"
+					>I have a shorter stature and normal pores.</span
+				>
+				<span class="mt-2">I live quite a low-key life.</span>
+				<span class="mt-2"
+					><span class="font-bold">Places to visit before I die:</span
+					> Tibet & Vietnam.</span
+				>
+				<span class="mt-2"
+					><span class="font-bold"
+						>One of my embarrassing habits:</span
+					> Talking to myself.</span
+				>
+				<span class="mt-2"
+					>I’m usually quiet online to save excitement for in person
+					meetings.</span
+				>
+				<span class="mt-2"
+					>Sometimes it works but most times, I’m seen as a <a
+						class="txt_bg_clr"
+						href="https://www.hindwi.org/hindi-dictionary/meaning-of-leta-latiif"
+						target="_blank"><em>Let Latiif</em></a
+					>.</span
+				>
+				<span class="mt-2 font-bold"
+					>You'll probably never see me:
+				</span>
+				<div class="flex justify-start items-center gap-2">
+					<div class="flex justify-start items-center gap-1">
+						<span style="font-size: 20px; color: #000000;">•</span> get
+						angry
+					</div>
+					<div class="flex justify-start items-center gap-1">
+						<span style="font-size: 20px; color: #000000;">•</span> cry
+					</div>
+					<div class="flex justify-start items-center gap-1">
+						<span style="font-size: 20px; color: #000000;">•</span> take
+						photos of myself
+					</div>
+					<div class="flex justify-start items-center gap-1">
+						<span style="font-size: 20px; color: #000000;">•</span> follow
+						internet trends
+					</div>
+				</div>
+				<span class="mt-2 font-bold">About this website:</span>
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> It has
+					countless bugs and unoptimized parts I don't bother to fix.
+				</div>
+				<div class="flex justify-start items-center gap-1">
+					<span style="font-size: 20px; color: #000000;">•</span> You won’t
+					find life lessons here. No motivation. No polish. Just lo-fi,
+					trivial, occasionally quirky writing.
+				</div>
+				<span class="mt-8"
+					>2025. Made with <a
+						href="https://astro.build/"
+						target="_blank"
+						class="txt_bg_clr">Astro</a
+					>.</span
+				>
 			</div>
-			<div class="flex justify-start items-center gap-1">
-				<span style="font-size: 20px; color: #000000;">•</span> You won’t
-				find life lessons here. No motivation. No polish. Just lo-fi, trivial,
-				occasionally quirky writing.
-			</div>
-			<span class="mt-8"
-				>2025. Made with <a
-					href="https://astro.build/"
+			<div
+				class="flex flex-col justify-start items-start switch-on gap-3 mt-6 text-lg"
+			>
+				<a
+					href="https://www.linkedin.com/in/taksh000/"
 					target="_blank"
-					class="txt_bg_clr">Astro</a
-				>.</span
-			>
+					class="flex items-center gap-3 hover:opacity-70 transition"
+				>
+					<img
+						src="/linkedin_icon.png"
+						alt="linkedin"
+						class="w-6 h-6"
+					/>
+					LinkedIn
+				</a>
+
+				<a
+					href="/Taksh_Gadhiya.pdf"
+					target="_blank"
+					class="flex items-center gap-3 hover:opacity-70 transition"
+				>
+					<img src="/resume_en.png" alt="linkedin" class="w-6 h-6" />
+					Resume (EN)
+				</a>
+
+				<a
+					href="/履歴書.pdf"
+					target="_blank"
+					class="flex items-center gap-3 hover:opacity-70 transition"
+				>
+					<img src="/resume_jp.png" alt="linkedin" class="w-6 h-6" />
+					履歴書 (JP)
+				</a>
+
+				<a
+					href="/職務経歴書.pdf"
+					target="_blank"
+					class="flex items-center gap-3 hover:opacity-70 transition"
+				>
+					<img
+						src="/shokumu_keirekisho.png"
+						alt="linkedin"
+						class="w-6 h-6"
+					/>
+					職務経歴書 (JP)
+				</a>
+
+				<a
+					href="https://github.com/tenjiku9181"
+					target="_blank"
+					class="flex items-center gap-3 hover:opacity-70 transition"
+				>
+					<img
+						src="/github_icon.png"
+						alt="linkedin"
+						class="w-6 h-6"
+					/>
+					GitHub
+				</a>
+			</div>
+
 			<div class="flex justify-center items-center">
 				<img
 					src="/butterfly_flat.avif"
@@ -156,3 +240,113 @@ const pageTitle = "About Taksh";
 		}
 	}
 </style>
+<style>
+	.switch-on {
+		display: none;
+	}
+	.switch {
+		cursor: pointer;
+		position: relative;
+		&:before {
+			content: "";
+			width: 60px;
+			height: 32px;
+			border-radius: 16px;
+			background: transparent;
+			position: absolute;
+			left: 0;
+			top: 0;
+			box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+		}
+		input {
+			display: none;
+			& + div {
+				position: relative;
+				&:before,
+				&:after {
+					--s: 1;
+					content: "";
+					position: absolute;
+					height: 4px;
+					top: 14px;
+					width: 24px;
+					background: #779e8c;
+					transform: scaleX(var(--s));
+					transition: transform 0.3s ease;
+				}
+				&:before {
+					--s: 0;
+					left: 4px;
+					transform-origin: 0 50%;
+					border-radius: 2px 0 0 2px;
+				}
+				&:after {
+					left: 32px;
+					transform-origin: 100% 50%;
+					border-radius: 0 2px 2px 0;
+				}
+				span {
+					padding-left: 60px;
+					line-height: 28px;
+					color: #9ea0be;
+					&:before {
+						--x: 0;
+						--b: #779e8c;
+						--s: 4px;
+						content: "";
+						position: absolute;
+						left: 4px;
+						top: 4px;
+						width: 24px;
+						height: 24px;
+						border-radius: 50%;
+						box-shadow: inset 0 0 0 var(--s) var(--b);
+						transform: translateX(var(--x));
+						transition:
+							box-shadow 0.3s ease,
+							transform 0.3s ease;
+					}
+					&:not(:empty) {
+						padding-left: 68px;
+					}
+				}
+			}
+			&:checked {
+				& + div {
+					&:before {
+						--s: 1;
+					}
+					&:after {
+						--s: 0;
+					}
+					span {
+						&:before {
+							--x: 28px;
+							--s: 12px;
+							--b: #779e8c;
+						}
+					}
+				}
+			}
+		}
+	}
+</style>
+<script is:inline>
+	function handleLinkViewToggle() {
+		const toggle = document.getElementById("aboutSwitch");
+		const switchOffView = document.querySelector(".switch-off");
+		const switchOnView = document.querySelector(".switch-on");
+
+		if (toggle.checked) {
+			switchOffView.style.display = "none";
+			switchOnView.style.display = "flex";
+		} else {
+			switchOffView.style.display = "flex";
+			switchOnView.style.display = "none";
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		handleLinkViewToggle();
+	});
+</script>
