@@ -8,8 +8,8 @@ export async function getStaticPaths() {
       new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime(),
   );
 
-  return sortedPosts.map((post, index) => ({
-    params: { slug: post.id },
+  return sortedPosts.map((post) => ({
+    params: { slug: post.data.slug },
     props: {
       post,
     },

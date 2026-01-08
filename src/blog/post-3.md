@@ -1,5 +1,6 @@
 ---
 title: "navi vavdi"
+slug: "navi-vavdi"
 pubDate: 2025-12-01
 location: "Navi vavdi"
 tags:

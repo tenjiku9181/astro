@@ -6,6 +6,7 @@ const publishedDate = new Date(frontmatter.pubDate);
 
 <BaseLayout pageTitle={`Post | ${frontmatter.title}`}>
   <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
+  <!-- 
     <span
       class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"
     >
@@ -66,9 +67,9 @@ const publishedDate = new Date(frontmatter.pubDate);
           ))}
         </div>
       )
-    }
+    }-->
     <slot />
-  </div>
+  </div> 
 
   <style>
     figure img {

@@ -1,5 +1,6 @@
 ---
 title: "0 test"
+slug: "0-test"
 pubDate: 2000-01-01
 location: "space"
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Birthday"
+slug: "birthday"
 pubDate: 2002-12-02
 location: "Rohishala"
 tags:

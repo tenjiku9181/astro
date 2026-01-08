@@ -1,5 +1,6 @@
 ---
 title: "College Day"
+slug: "college-day"
 pubDate: 2020-07-01
 location: "Ahmedabad"
 tags:
