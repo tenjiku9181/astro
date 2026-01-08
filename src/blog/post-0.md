@@ -1,26 +1,17 @@
 ---
-title: "0 test"
-slug: "0-test"
-pubDate: 2000-01-01
-location: "space"
+title: "The Weight of Journey"
+slug: "the-weight-of-journey"
+pubDate: "8 Jan 2026"
+location: "Nani Raval Village, Kevadiya, Gujarat, India"
 tags:
-  - "1st"
-tagline: "It's 0"
+  - "Friends"
+  - "Trip"
+tagline: "Some journeys are scheduled by the heart, not the calendar."
 thumbnail: "https://www.mydebugdiary.com/images/ochakai/o14.jpg"
-description: "0"
 ---
-<p class="text-amber-300">Hii I am 0</p>
-<img src="\0/o14.jpg" alt="post-0 image 1" />
-
-
-<figure class="flex flex-col items-center gap-4 max-w-3xl">
-  <mux-player
-    playback-id="cNdqrt00baoEw6a701301fJF01LCvnn8YLTYgQbOYbhbUdE"
-    class="w-227.5"
-    metadata-video-title="video-right"
-    autoplay
-    loop
-    playsinline
-  ></mux-player>
-</figure>
+<img src="https://www.mydebugdiary.com/images/small-world/DSCF7539.jpg" alt="{item.imageUrl}" class="w-227.5" />
+Pending things:
+- Thumbnail change
+- story
+- images
 

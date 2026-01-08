@@ -51,9 +51,12 @@ const { posts } = Astro.props;
                 class="w-full sm:w-1/3 p-4 sm:p-6 flex flex-col justify-between h-1/2 sm:h-full"
             >
                 <div>
-                    <p id="modalDate" class="text-xs opacity-60"></p>
+                    <p id="modalDate" class="text-xs opacity-80 mb-5"></p>
                     <h2 id="modalTitle" class="text-xl font-semibold mt-2"></h2>
                     <p id="modalTagline" class="mt-4 text-sm opacity-80"></p>
+                    <p id="modalLocation" class="mt-4 text-sm opacity-80"></p>
+                    <p id="modaltags" class="mt-4 text-sm opacity-90 text-end">
+                    </p>
                 </div>
                 <a
                     id="readMoreBtn"
@@ -89,7 +92,14 @@ const { posts } = Astro.props;
         document.getElementById("modalTitle").innerText = post.data.title;
         document.getElementById("modalDate").innerText = post.data.date ?? "";
         document.getElementById("modalTagline").innerText =
-            post.data.description ?? "";
+            post.data.tagline ?? "";
+        document.getElementById("modalLocation").innerText =
+            "📍" + post.data.location ?? "";
+        document.getElementById("modaltags").innerText = (post.data.tags ?? [])
+            .map((tag) => `#${tag}`)
+            .join("  ");
+        document.getElementById("modalDate").innerText =
+            "📅" + post.data.pubDate ?? "";
 
         const readMore = document.getElementById("readMoreBtn");
         readMore.setAttribute("href", `/posts/${post.id}/`);

@@ -6,7 +6,6 @@ const publishedDate = new Date(frontmatter.pubDate);
 
 <BaseLayout pageTitle={`Post | ${frontmatter.title}`}>
   <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
-  <!-- 
     <span
       class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"
     >
@@ -32,7 +31,7 @@ const publishedDate = new Date(frontmatter.pubDate);
       <img src="/location.png" class="h-7 w-7" />
       {frontmatter.location}
     </div>
-    <div class="flex justify-center items-center gap-2 text-sm mt-3 opacity-80">
+    <div class="flex justify-center items-center gap-2 text-sm mt-5 opacity-80">
       <img src="/tag.png" class="h-6 w-6 scale-x-[-1]" />
       {
         frontmatter.tags.map((tag: string) => (
@@ -42,38 +41,11 @@ const publishedDate = new Date(frontmatter.pubDate);
         ))
       }
     </div>
-    <span class="mt-6">--- * ---</span>
+    <span class="mt-5">--- * ---</span>
     <span class="text-sm italic opacity-80">
       <em>{frontmatter.tagline}</em>
     </span>
-    <span>--- * ---</span>
-    <p class="text-sm opacity-80 mt-8 text-center max-w-2xl">
-      {frontmatter.description}
-    </p>
-    {
-      frontmatter.stories && frontmatter.stories.length > 0 && (
-        <div class="flex flex-col gap-16 mt-14 w-full items-center">
-          {frontmatter.stories.map((item: any) => (
-            <figure class="flex flex-col items-center gap-4 max-w-3xl">
-              <img src={item.imageUrl} alt={item.imageUrl} class="w-227.5" />
-
-              <figcaption class="text-sm italic opacity-80 text-center">
-                <div class="flex justify-center items-center">
-                  📍<span class="block font-semibold">{item.location}</span>
-                </div>
-                <span>{item.storycaption}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      )
-    }-->
+    <span class="mb-5">--- * ---</span>
     <slot />
-  </div> 
-
-  <style>
-    figure img {
-      width: calc(var(--spacing) * 227.5);
-    }
-  </style>
+  </div>
 </BaseLayout>
