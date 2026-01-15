@@ -5,8 +5,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const allPosts = await getCollection("blog");
 const allSortedPosts = allPosts.sort(
         (b, a) =>
-            new Date(a.data.pubDate).getTime() -
-            new Date(b.data.pubDate).getTime(),
+            new Date(a.data.eventDate).getTime() -
+            new Date(b.data.eventDate).getTime(),
     );
 const columnConfig = [
 	{ spacerClass: "h-25" }, 

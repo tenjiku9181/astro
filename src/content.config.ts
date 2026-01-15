@@ -11,10 +11,11 @@ const blog = defineCollection({
     title: z.string(),
     slug: z.string(),
     pubDate: z.string(),
+    eventDate: z.date(),
     location: z.string(),
     tags: z.array(z.string()),
     tagline: z.string(),
-    thumbnail: z.string().url()
+    thumbnail: z.string()
   }),
 });
 
