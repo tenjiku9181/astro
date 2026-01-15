@@ -5,7 +5,8 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const sortedPosts = posts.sort(
     (b, a) =>
-      new Date(a.data.eventDate).getTime() - new Date(b.data.eventDate).getTime(),
+      new Date(a.data.eventDate).getTime() -
+      new Date(b.data.eventDate).getTime(),
   );
 
   return sortedPosts.map((post) => ({

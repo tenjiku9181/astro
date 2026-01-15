@@ -4,21 +4,26 @@ import BlogPostModal from "../components/BlogPostModal.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const allPosts = await getCollection("blog");
 const allSortedPosts = allPosts.sort(
-        (b, a) =>
-            new Date(a.data.eventDate).getTime() -
-            new Date(b.data.eventDate).getTime(),
-    );
+	(b, a) =>
+		new Date(a.data.eventDate).getTime() -
+		new Date(b.data.eventDate).getTime(),
+);
 const columnConfig = [
-	{ spacerClass: "h-25" }, 
+	{ spacerClass: "h-25" },
 	{ spacerClass: "h-15" },
 	{ spacerClass: "h-5" },
 	{ spacerClass: "h-15" },
 ];
-const columns: { id: string; data: { title: string; thumbnail: string; tags: string[] } }[][] = [[], [], [], []];
+const columns: {
+	id: string;
+	data: { title: string; thumbnail: string; tags: string[] };
+}[][] = [[], [], [], []];
 allSortedPosts.forEach((post: any, index: any) => {
 	columns[index % 4].push(post);
 });
-const tags = [...new Set(allSortedPosts.map((post: any) => post.data.tags).flat())];
+const tags = [
+	...new Set(allSortedPosts.map((post: any) => post.data.tags).flat()),
+];
 const getCoverType = (rowIndex: number, colIndex: number) => {
 	return (rowIndex + colIndex) % 4;
 };

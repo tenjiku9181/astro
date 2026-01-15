@@ -23,7 +23,7 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={`Tag | ${tag}`} >
+<BaseLayout pageTitle={`Tag | ${tag}`}>
     <div class="flex flex-col items-center p-5 xl:p-30 lg:p-30 md:p-20 sm:p-20">
         <span
             class="txt_clr text-2xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-3xl"
@@ -56,9 +56,7 @@ const { posts } = Astro.props;
             transform: rotate(0deg);
         }
         100% {
-            transform: rotate(
-                360deg
-            );
+            transform: rotate(360deg);
         }
     }
 

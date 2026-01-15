@@ -104,9 +104,54 @@ From backside of the house, we planned a bold guava mission.
 We climbed with high hopes and low strategy.
 Result? Only one guava captured… case closed with disappointment 😞.
 </p>
-<img src="/0/0-guava-1.jpg" alt="/0/0-guava-1.jpg" class="w-227.5" />
-<img src="/0/0-guava-2.jpg" alt="/0/0-guava-2.jpg" class="w-227.5 mt-5" />
-<img src="/0/0-guava-3.jpg" alt="/0/0-guava-3.jpg" class="w-227.5 mt-5" />
+<!-- ... -->
+<style>
+  .swiper-slide img {
+    width: calc(var(--spacing) * 227.5);
+  }
+  @media (max-width: 990px) {
+    .swiper {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+    .swiper-slide {
+      width: 100%;
+    }
+  }
+</style>
+<div class="swiper w-227.5">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="/0/0-guava-1.jpg" alt="Guava mission 1">
+    </div>
+    <div class="swiper-slide">
+      <img src="/0/0-guava-2.jpg" alt="Guava mission 2">
+    </div>
+    <div class="swiper-slide">
+      <img src="/0/0-guava-3.jpg" alt="Guava mission 3">
+    </div>
+    <div class="swiper-slide">
+      <img src="/0/0-guava-4.jpg" alt="Guava mission 4">
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    }
+  });
+</script>
+<!-- ... -->
 <p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
 While returning, Naitul came with me to the railway station 🚉.
 On the way, something special appeared <a href="https://share.google/rk6gsj98L38n4YIv6" class="txt_bg_clr opacity-100 cursor-pointer" target="_blank">The Statue of Unity </a>🗿.
