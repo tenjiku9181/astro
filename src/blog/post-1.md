@@ -7,7 +7,7 @@ location: "Nani Vavdi, Botad, Gujarat"
 tags:
   - "invincible"
   - "volunteering"
-tagline: ""
+tagline: "Chai, Checkups & Cherished Moments"
 thumbnail: "/1/thumbnail.jpeg"
 ---
 <p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center">
