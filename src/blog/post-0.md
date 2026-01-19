@@ -10,17 +10,17 @@ tags:
 tagline: "Some journeys are scheduled by the heart, not on calendar."
 thumbnail: "/0/thumbnail.jpg"
 ---
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center">
 Saturday morning, I was calling my college and hostel friends. During one call, Naitul invited me to come home with him and return to Ahmedabad on Sunday. At that moment, he was already packing bags in his car with his ME classmate (Kamta).
 </p>
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 He gave me ten minutes to pack my backpack and wait outside my PG. I rushed, waited, and he picked me up. After a smooth drive of about three to three and a half hours, we reached his village.
 </p>
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 This is how his home looks.
 </p>
 <img src="/0/naitul_house.jpg" alt="/0/0-main.jpg" class="w-227.5 mb-5" />
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 Outside his house, I spotted old hand pump & without thinking twice, tried my luck pulling water from it, some habits don’t need permission.
 </p>
 <div class="w-full flex justify-center p-0">
@@ -44,7 +44,7 @@ Outside his house, I spotted old hand pump & without thinking twice, tried my lu
     playsinline
   ></mux-player>
 </div>
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 Near Naitul’s house, the Narmada river waited quietly.
 We picked up stones and skimmed them across the water—skip, skip, splash.
 </p>
@@ -72,7 +72,7 @@ We picked up stones and skimmed them across the water—skip, skip, splash.
 <img src="/0/0-me-1.jpg" alt="/0/0-me-1.jpg" class="w-227.5 mt-5" />
 <img src="/0/0-me-2.jpg" alt="/0/0-me-2.jpg" class="w-227.5 mt-5" />
 <img src="/0/naitul-group.jpg" alt="/0/naitul-group.jpg" class="w-227.5 mt-5" />
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 Sunday morning. I woke up early, ahead of noise ⏰.
 The air was fresh, calm, and honest 🍃.
 I captured the moment quietly 📸—no suspects, just peace, light, and a closed case 🌅.
@@ -99,7 +99,7 @@ I captured the moment quietly 📸—no suspects, just peace, light, and a close
   ></mux-player>
 </div>
 <img src="/0/parrot-feeding.jpg" alt="/0/parrot-feeding.jpg" class="w-227.5 mt-5" />
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 From backside of the house, we planned a bold guava mission.
 We climbed with high hopes and low strategy.
 Result? Only one guava captured… case closed with disappointment 😞.
@@ -152,7 +152,7 @@ Result? Only one guava captured… case closed with disappointment 😞.
   });
 </script>
 <!-- ... -->
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-5">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-5">
 While returning, Naitul came with me to the railway station 🚉.
 On the way, something special appeared <a href="https://share.google/rk6gsj98L38n4YIv6" class="txt_bg_clr opacity-100 cursor-pointer" target="_blank">The Statue of Unity </a>🗿.
 Not just concrete and steel, it spoke without words: unity is strength 🤝.
@@ -181,7 +181,7 @@ Not just concrete and steel, it spoke without words: unity is strength 🤝.
 <p class="xl:w-250 sm:leading-relaxed opacity-70 text-xl font-bold italic text-center mt-10">
 A Visit of Quiet Strength
 </p>
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-sm text-center mt-0">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-0">
 This visit was not only journey, but moment of shared silence & strength.
 I came to Naitul’s house with sympathy in my heart, remembering his father, who passed away last month.<br>
 🙏 ॐ શાંતિ
