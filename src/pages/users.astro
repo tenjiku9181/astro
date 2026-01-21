@@ -1,0 +1,299 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Admin Login";
+const inputs = [
+    {
+        id: "admin_username",
+        name: "username",
+        type: "text",
+        placeholder: "Username",
+    },
+    {
+        id: "admin_access",
+        name: "Access",
+        type: "number",
+        placeholder: "0000",
+    },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div
+        class="h-screen overflow-hidden max-h-screen flex justify-center items-center sm:p-10 p-0"
+    >
+        <section
+            class="min-h-screen flex justify-center items-center text-zinc-950 p-4"
+        >
+            <div
+                class="bg-transparent w-full max-w-96 p-8 rounded-2xl"
+                id="login_view"
+            >
+                <form method="post" id="admin_login_form">
+                    {
+                        inputs.map((input: any) => (
+                            <input
+                                id={input.id}
+                                name={input.name}
+                                type={input.type}
+                                placeholder={input.placeholder}
+                                required={input.required ?? true}
+                                autocomplete={input.autocomplete ?? "off"}
+                                class="w-full rounded border border-zinc-400 text-md outline-0 p-2 pr-12 mt-2"
+                            />
+                        ))
+                    }
+                    <button
+                        type="submit"
+                        class="w-full mt-2 p-2 rounded txt_bg_clr text-white text-lg cursor-pointer font-semibold border border-zinc-400"
+                    >
+                        Login
+                    </button>
+                </form>
+                <p
+                    id="error_message"
+                    class="text-sm text-red-600 text-center hidden"
+                >
+                </p>
+            </div>
+            <div
+                class="bg-transparent w-full max-w-4xl p-4 rounded-2xl hidden"
+                id="user_table_view"
+            >
+                <p
+                    class="hidden text-sm text-center"
+                    id="status_update_message"
+                >
+                </p>
+                <div class="border border-zinc-500 rounded-lg overflow-hidden">
+                    <div
+                        class="sm:grid grid-cols-5 font-semibold text-sm border-b border-zinc-500 hidden"
+                    >
+                        <div class="p-3 text-center">User Name</div>
+                        <div class="p-3 text-center">Access</div>
+                        <div class="p-3 text-center">Is Active</div>
+                        <div class="p-3 text-center">Change Status</div>
+                        <div class="p-3 text-center">Delete</div>
+                    </div>
+                    <div
+                        class="flex w-90 justify-center items-center font-semibold text-sm border-b border-zinc-500 sm:hidden"
+                    >
+                        <div class="p-3 text-center">User List</div>
+                    </div>
+                    <div
+                        class="max-h-100 sm:max-h-80 overflow-y-auto divide-y divide-zinc-30"
+                    >
+                        <div id="user_table_body"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
+<script is:inline>
+    const form = document.getElementById("admin_login_form");
+    const errorMessage = document.getElementById("error_message");
+    const loginView = document.getElementById("login_view");
+    const userTableView = document.getElementById("user_table_view");
+    const userTableBody = document.getElementById("user_table_body");
+    const statusUpdateMessage = document.getElementById(
+        "status_update_message",
+    );
+
+    const renderUsers = (users) => {
+        userTableBody.innerHTML = "";
+
+        users.forEach((user) => {
+            const row = document.createElement("div");
+            row.className = "grid grid-cols-1 gap-2 p-3 sm:grid-cols-5 sm:gap-0 sm:p-0 items-center text-sm border-b sm:border-0";
+
+            row.innerHTML = `
+            <div class="p-3 font-medium text-center border-b-1 sm:border-b-0 border-zinc-400 border-dashed">${user.username}</div>
+
+            <div class="p-3 text-center border-b-1 sm:border-b-0 border-zinc-400 border-dashed">${user.access}</div>
+
+            <div class="p-3 text-center border-b-1 sm:border-b-0 border-zinc-400 border-dashed ${
+                user.isActive ? "text-green-600" : "text-red-600"
+            }">
+                ${user.isActive}
+            </div>
+
+            <div class="p-3 text-center border-b-1 sm:border-b-0 border-zinc-400 border-dashed">
+                <button
+                    class="px-3 py-1 rounded text-white text-xs font-semibold ${
+                        user.isActive
+                            ? "bg-red-500 hover:bg-red-600"
+                            : "bg-green-500 hover:bg-green-600"
+                    }"
+                    onclick="toggleUserStatus('${user._id}')"
+                >
+                    ${user.isActive ? "Deactivate" : "Activate"}
+                </button>
+            </div>
+
+            <div class="p-3 text-center ">
+                <button
+                    onclick="deleteUser('${user._id}')"
+                    title="Delete User"
+                >
+                    <img src="https://img.icons8.com/?size=100&id=QFAMAEC2jXs6&format=png&color=000000" alt='${user._id}' width="30" height="30"/>
+                </button>
+            </div>
+        `;
+
+            userTableBody.appendChild(row);
+        });
+    };
+
+    const toggleUserStatus = async (userId) => {
+        const token = localStorage.getItem("admin_token");
+
+        const response = await fetch(
+            `https://it-s-taksh-server.vercel.app/auth/toggle-user-status/${userId}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            },
+        );
+        const data = await response.json();
+        statusUpdateMessage.textContent = data.message;
+        statusUpdateMessage.classList.remove("hidden");
+        if (data.isActive === true) {
+            statusUpdateMessage.classList.remove("text-red-600");
+            statusUpdateMessage.classList.add("text-green-600");
+        } else {
+            statusUpdateMessage.classList.remove("text-green-600");
+            statusUpdateMessage.classList.add("text-red-600");
+        }
+
+        setTimeout(() => {
+            statusUpdateMessage.textContent = "";
+            statusUpdateMessage.classList.add("hidden");
+        }, 1500);
+
+        if (data.allowed) {
+            await showUserTable();
+        }
+    };
+
+    const deleteUser = async (userId) => {
+        const token = localStorage.getItem("admin_token");
+
+        const response = await fetch(
+            `https://it-s-taksh-server.vercel.app/auth/delete-user/${userId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            },
+        );
+        const data = await response.json();
+        statusUpdateMessage.textContent = data.message;
+        statusUpdateMessage.classList.remove("hidden");
+        statusUpdateMessage.classList.add("text-red-600");
+
+        setTimeout(() => {
+            statusUpdateMessage.textContent = "";
+            statusUpdateMessage.classList.add("hidden");
+        }, 1500);
+
+        if (data.allowed) {
+            await showUserTable();
+        }
+    };
+
+    const showLogin = () => {
+        loginView.classList.remove("hidden");
+        userTableView.classList.add("hidden");
+    };
+
+    const showUserTable = async () => {
+        loginView.classList.add("hidden");
+        userTableView.classList.remove("hidden");
+        const token = localStorage.getItem("admin_token");
+        try {
+            const response = await fetch(
+                "https://it-s-taksh-server.vercel.app/auth/get-user-list",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+            const data = await response.json();
+            if (data.allowed === true) {
+                renderUsers(data.users);
+            } else {
+                localStorage.removeItem("admin_token");
+                showLogin();
+            }
+        } catch (err) {
+            localStorage.removeItem("admin_token");
+            showLogin();
+        }
+    };
+
+    const checkAdminAccess = async () => {
+        const token = localStorage.getItem("admin_token");
+        if (!token) {
+            showLogin();
+            return;
+        }
+        try {
+            const response = await fetch(
+                "https://it-s-taksh-server.vercel.app/auth/check-access",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+            const data = await response.json();
+            if (data.allowed === true) {
+                showUserTable();
+            } else {
+                localStorage.removeItem("admin_token");
+                showLogin();
+            }
+        } catch (err) {
+            localStorage.removeItem("admin_token");
+            showLogin();
+        }
+    };
+
+    checkAdminAccess();
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("admin_username").value;
+        const access = document.getElementById("admin_access").value;
+
+        try {
+            const response = await fetch(
+                "https://it-s-taksh-server.vercel.app/auth/login-admin",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ username, access }),
+                },
+            );
+            const result = await response.json();
+            if (result.allowed === false) {
+                errorMessage.textContent = result.message;
+                errorMessage.classList.remove("hidden");
+            } else {
+                errorMessage.classList.add("hidden");
+                localStorage.setItem("admin_token", result.token);
+                await showUserTable();
+            }
+        } catch (error) {
+            errorMessage.textContent = error.message;
+            errorMessage.classList.remove("hidden");
+        }
+    });
+</script>

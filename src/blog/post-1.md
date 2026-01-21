@@ -344,3 +344,40 @@ Hearts full. 😊✨
     ></iframe>
   </div>
 </div>
+<p class="italic xl:w-250 sm:leading-relaxed opacity-70 text-lg text-center mt-3">
+Wanted to know Taksh's Special content ?🔐㊙️
+</p>
+<div id="check_input_btn" data-post-id="1" class="hidden flex justify-center items-center gap-2 mt-3">
+  <input
+    id="username_input"
+    type="text"
+    placeholder="Enter username"
+    class="border border-zinc-950 rounded w-full h-8 p-2 outline-none"
+  />
+  <button id="check_private_content" data-post-id="1" class="border border-zinc-950 rounded tag_button text-sm h-8 p-2 outline-none">
+    Check
+  </button>
+</div>
+
+<div id="private_content" data-post-id="1" class="hidden">
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-2">
+At the event, I happened to meet someone.
+We just shared curiosity & unexpectedly overlap of interests (JP).
+For a little while, the exchange felt balanced.<br> I never declared feelings to her.
+I have always believed that giving a response is one of the simplest forms of giving respect.
+<br>Here, the silence was consistent enough to be its own answer.
+</p>
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center font-semibold mt-3">
+About her: 
+</p>
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center">
+She is Social Media Manager in Ahmedabad based company.
+<br>Our ages were almost aligned & have anger issues. Not the destructive kind, more like a spark.
+<br>Later she said that she isn't that much interested in jp as she can't give 1+ years in language learning.
+<br>But she really interested to learn Spanish (I don't ask why😶)
+</p>
+<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center mt-3">
+In future, it remains open file. Maybe paths will cross again. Maybe they won’t.
+</p>
+</div>
+<script type="module" src='/scripts/special_content.js'></script>
