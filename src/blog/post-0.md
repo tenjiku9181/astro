@@ -6,7 +6,6 @@ eventDate: 2026-01-08
 location: "Nani Raval Village, Kevadiya, Gujarat, India"
 tags:
   - "Friends"
-  - "Trip"
 tagline: "Some journeys are scheduled by the heart, not on calendar."
 thumbnail: "/0/thumbnail.jpg"
 ---

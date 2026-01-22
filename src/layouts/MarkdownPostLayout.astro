@@ -13,27 +13,39 @@ const { frontmatter } = Astro.props;
     <div
       class="flex justify-center items-center gap-2 text-sm italic mt-5 opacity-80"
     >
-      <img src="/calender.png" class="h-7 w-7" />
+      <img src="/imgs/calender.png" class="h-7 w-7" />
       <span>
-        {frontmatter.pubDate}
+        {new Date(frontmatter.eventDate).toLocaleDateString(
+          "en-GB",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          },
+        )}
       </span>
     </div>
     <div
       class="flex justify-center items-center gap-2 text-sm italic mt-3 opacity-80"
     >
-      <img src="/location.png" class="h-7 w-7" />
+      <img src="/imgs/location.png" class="h-7 w-7" />
       {frontmatter.location}
     </div>
-    <div class="flex justify-center items-center gap-2 text-sm mt-5 opacity-80">
-      <img src="/tag.png" class="h-6 w-6 scale-x-[-1]" />
-      {
-        frontmatter.tags.map((tag: string) => (
-          <a href={`/tags/${tag}`} class="border rounded px-2 tag_button py-1">
-            {tag}
-          </a>
-        ))
-      }
-    </div>
+    {
+      frontmatter.tags && frontmatter.tags.length > 0 && (
+        <div class="flex justify-center items-center gap-2 text-sm mt-5 opacity-80">
+          <img src="/imgs/tag.png" class="h-6 w-6 scale-x-[-1]" />
+          {frontmatter.tags.map((tag: string) => (
+            <a
+              href={`/tags/${tag}`}
+              class="border rounded px-2 tag_button py-1"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
     <span class="mt-5">--- * ---</span>
     <span class="text-md italic opacity-80 font-bold">
       <em>{frontmatter.tagline}</em>

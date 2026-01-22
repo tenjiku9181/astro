@@ -16,7 +16,7 @@ const { posts } = Astro.props;
             onclick="closeBlogPostModal()"
         >
             <img
-                src="/close_icon.png"
+                src="/imgs/close_icon.png"
                 class="h-7 w-7 scale-[-1]"
                 alt="prev button icon"
             />
@@ -26,7 +26,7 @@ const { posts } = Astro.props;
             onclick="prevPost()"
         >
             <img
-                src="/prev_next_icon.png"
+                src="/imgs/prev_next_icon.png"
                 class="h-7 w-7 scale-[-1]"
                 alt="prev button icon"
             />
@@ -36,7 +36,7 @@ const { posts } = Astro.props;
             onclick="nextPost()"
         >
             <img
-                src="/prev_next_icon.png"
+                src="/imgs/prev_next_icon.png"
                 class="h-7 w-7"
                 alt="prev button icon"
             />
@@ -99,7 +99,12 @@ const { posts } = Astro.props;
             .map((tag) => `#${tag}`)
             .join("  ");
         document.getElementById("modalDate").innerText =
-            "📅" + post.data.pubDate ?? "";
+            "📅" +
+                new Date(post.data.eventDate).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                }) ?? "";
 
         const readMore = document.getElementById("readMoreBtn");
         readMore.setAttribute("href", `/posts/${post.id}/`);
