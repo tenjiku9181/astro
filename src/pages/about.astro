@@ -7,8 +7,8 @@ const pageTitle = "About Taksh";
 	<div
 		class="h-screen grid grid-cols-2 overflow-hidden max-h-screen about-wrapper"
 	>
-		<div class="about-images">
-			<div class="flex flex-col h-full">
+		<div class="about-images h-screen">
+			<div class="flex flex-col h-full w-full">
 				<div class="flex-1 border-b border-zinc-950">
 					<div class="flex w-full h-full">
 						<div class="flex-1 border-r border-zinc-950">
@@ -28,22 +28,19 @@ const pageTitle = "About Taksh";
 							<img
 								src="/imgs/me.jpg"
 								alt="me"
-								class="w-full h-full object-cover"
+								class="block w-full h-full object-cover"
 							/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div
-			class="absolute top-0 left-1/2 h-full w-px bg-zinc-950 center-divider"
-		>
-		</div>
+		<div class="center-divider"></div>
 
 		<div
-			class="flex flex-col justify-start items-start mt-35 ms-30 tracking-wider about-text text-xs opacity-80 relative"
+			class="about-text flex flex-col tracking-wider text-xs opacity-80 w-full h-full"
 		>
-			<div class="flex justify-between items-center w-full">
+			<div class="flex items-start justify-between w-full mb-8">
 				<span class="txt_bg_clr text-4xl">よ。</span>
 				<span class="text-4xl p-0 sm:p-5">
 					<label class="switch">
@@ -171,7 +168,11 @@ const pageTitle = "About Taksh";
 					target="_blank"
 					class="flex items-center gap-3 hover:opacity-70 transition"
 				>
-					<img src="/imgs/rirekisho.png" alt="linkedin" class="w-6 h-6" />
+					<img
+						src="/imgs/rirekisho.png"
+						alt="linkedin"
+						class="w-6 h-6"
+					/>
 					履歴書 (JP)
 				</a>
 
@@ -206,18 +207,36 @@ const pageTitle = "About Taksh";
 				<img
 					src="/imgs/butterfly_flat.avif"
 					alt="butterfly flat"
-					class="w-full h-full object-cover"
+					class="w-full object-contain"
 				/>
 			</div>
 		</div>
 	</div>
 </BaseLayout>
 <style>
+	.switch-off,
+	.switch-on {
+		max-width: 560px;
+	}
+
 	.about-wrapper {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: minmax(380px, 1fr) minmax(420px, 1fr);
 		height: 100vh;
+		width: 100%;
 		overflow: hidden;
+	}
+
+	.about-text {
+		height: 100vh;
+		overflow-y: auto;
+
+		padding-top: 120px;
+		padding-left: 140px;
+		padding-right: 120px;
+		padding-bottom: 40px;
+
+		box-sizing: border-box;
 	}
 
 	@media (max-width: 639px) {
@@ -231,12 +250,48 @@ const pageTitle = "About Taksh";
 		}
 
 		.about-text {
-			order: 1;
-			margin: 2rem 1.5rem;
+			padding: 8rem 8rem 3rem 8rem;
+			height: 100vh;
+			overflow-y: auto;
 		}
 
 		.about-images {
 			order: 2;
+			width: 100%;
+			height: 100vh;
+		}
+
+		.center-divider {
+			display: none;
+		}
+	}
+
+	.center-divider {
+		position: fixed;
+		top: 0;
+		left: 50%;
+		width: 1px;
+		height: 100vh;
+		background: #18181b;
+		transform: translateX(-0.5px);
+	}
+
+	@media (max-width: 639px) {
+		.about-wrapper {
+			display: flex;
+			flex-direction: column;
+			height: auto;
+		}
+
+		.about-text {
+			order: 1;
+			padding: 2rem 1.5rem;
+			height: auto;
+		}
+
+		.about-images {
+			order: 2;
+			height: auto;
 		}
 
 		.center-divider {
@@ -248,6 +303,7 @@ const pageTitle = "About Taksh";
 	.switch-on {
 		display: none;
 	}
+	
 	.switch {
 		cursor: pointer;
 		position: relative;
