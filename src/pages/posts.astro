@@ -31,7 +31,7 @@ const pageTitle = "Taksh's Notes";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<div class="grid grid-cols-[26%_47%_31%] h-screen relative notes-wrapper">
+	<div class="grid grid-cols-[25%_50%_25%] h-screen relative notes-wrapper">
 		<div class="border-r border-zinc-950 h-screen notes-left">
 			<div
 				class="flex border-b border-zinc-950 h-50 justify-start items-end"
@@ -62,7 +62,7 @@ const pageTitle = "Taksh's Notes";
 								tag != "" && (
 									<a
 										href={`/tags/${tag}`}
-										class="rounded w-fit px-3 py-2 cursor-pointer tag_button border"
+										class="rounded w-fit px-2 py-1 cursor-pointer tag_button border"
 									>
 										{tag}
 									</a>
@@ -115,7 +115,7 @@ const pageTitle = "Taksh's Notes";
 															}
 															width="400"
 															height="400"
-															style="max-width: unset;"
+															//style="max-width: unset;"
 															class="transition-transform duration-500 group-hover:scale-105"
 														/>
 														<div class="absolute inset-0 group-hover:bg-black/30 transition-colors duration-300" />
@@ -142,7 +142,7 @@ const pageTitle = "Taksh's Notes";
 																post.data.title
 															}
 															class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-															style="max-width: unset;"
+															//style="max-width: unset;"
 														/>
 														<div class="absolute inset-0 group-hover:bg-black/30 transition-colors duration-300" />
 														<div class="absolute bottom-0 left-0 right-0 p-2 bg_background/80 backdrop-blur-xs">
