@@ -7,8 +7,8 @@ location: "Bhopal, Madhya Pradesh"
 tagline: "Am i Smart?"
 thumbnail: "/2/thumbnail.jpg"
 ---
-<strong class="text-red-600">Blog is under processing...</strong>
-<p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center">
+<strong class="text-red-600">WIP...</strong>
+<!-- <p class="xl:w-250 sm:leading-relaxed opacity-70 text-xs text-center">
 It all started with boredom.
 One random day, I thought, “Let’s apply for SSC Tech entry Indian Army.”
 No big dream. No long planning. Just vibes.
@@ -58,4 +58,4 @@ Experience was.
 And trust me…
 that experience alone was worth everything 😄
 </p>
-
+ -->
